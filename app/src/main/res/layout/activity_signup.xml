@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/loginfinalback"
+    tools:context=".Signup">
+
+    <!--    <androidx.appcompat.widget.SwitchCompat-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:thumb="@drawable/thumb"-->
+    <!--        app:track="@drawable/track"-->
+    <!--        app:showText="true"-->
+    <!--        android:textOn="Signup Page"-->
+    <!--        android:textOff="Login Page"-->
+    <!--        android:id="@+id/switch1"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:layout_gravity="center|right"-->
+    <!--        android:checked="true"-->
+    <!--        android:layout_marginRight="20dp"-->
+    <!--        />-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Signup Page"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:hint="Enter Name"
+        android:id="@+id/edtfirstname"
+        android:textAlignment="center"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:hint="Enter Email"
+        android:id="@+id/edtemail"
+        android:textAlignment="center"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:inputType="textEmailAddress"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:hint="Enter Your Password"
+            android:id="@+id/edtpass1"
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:inputType="textPassword"
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:hint="Repeat Your Password"
+            android:id="@+id/edtpass2"
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/edtpass1"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:inputType="textPassword"
+            />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:onClick="signupclk"
+        android:textStyle="italic"
+        android:textSize="22sp"
+        app:cornerRadius="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+</LinearLayout>
