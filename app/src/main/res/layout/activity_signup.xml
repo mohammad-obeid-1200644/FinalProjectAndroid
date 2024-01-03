@@ -6,123 +6,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/loginfinalback"
-    tools:context=".Signup">
-
-    <!--    <androidx.appcompat.widget.SwitchCompat-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:thumb="@drawable/thumb"-->
-    <!--        app:track="@drawable/track"-->
-    <!--        app:showText="true"-->
-    <!--        android:textOn="Signup Page"-->
-    <!--        android:textOff="Login Page"-->
-    <!--        android:id="@+id/switch1"-->
-    <!--        android:layout_marginTop="10dp"-->
-    <!--        android:layout_gravity="center|right"-->
-    <!--        android:checked="true"-->
-    <!--        android:layout_marginRight="20dp"-->
-    <!--        />-->
+    android:background="@drawable/background"
+    tools:context=".SignupActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Signup Page"
+        android:text="SIGN UP"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:textSize="22sp"
-        android:textStyle="bold|italic"
+        android:textSize="35sp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textAlignment="center"
+        android:layout_marginTop="30dp"
 
         />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/edtFirstName"
         android:layout_gravity="center"
-        android:textStyle="italic"
-        android:textSize="18sp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:hint="Enter Name"
-        android:id="@+id/edtfirstname"
-        android:textAlignment="center"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:inputType="textPersonName"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:textSize="22dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="5dp"
         />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/edtEmail"
         android:layout_gravity="center"
-        android:textStyle="italic"
-        android:textSize="18sp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:hint="Enter Email"
-        android:id="@+id/edtemail"
-        android:textAlignment="center"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
-        android:inputType="textEmailAddress"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:inputType="textPersonName"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:textSize="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        />
+
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:layout_marginStart="8dp"
+        android:hint="Enter Password"
+        android:id="@+id/edtpass1"
+        android:textStyle="bold"
+        android:fontFamily="serif"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
         />
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="italic"
-            android:textSize="18sp"
-            android:hint="Enter Your Password"
-            android:id="@+id/edtpass1"
-            android:textAlignment="center"
-            android:textColorHint="@color/black"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/black"
-            android:inputType="textPassword"
-            />
 
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="italic"
-            android:textSize="18sp"
-            android:hint="Repeat Your Password"
-            android:id="@+id/edtpass2"
-            android:textAlignment="center"
-            android:textColorHint="@color/black"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/edtpass1"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/black"
-            android:inputType="textPassword"
-            />
-
-    </RelativeLayout>
-
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:layout_marginStart="8dp"
+        android:hint="Repeat your password"
+        android:id="@+id/edtpass2"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
+        />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
         android:text="Sign Up"
         android:onClick="signupclk"
-        android:textStyle="italic"
+        android:padding="8dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:id="@+id/login"
         android:textSize="22sp"
         app:cornerRadius="20dp"
         android:textColor="@color/black"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/buttonbg"
         />
 
 </LinearLayout>
