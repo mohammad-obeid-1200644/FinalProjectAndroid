@@ -18,15 +18,15 @@ public class CafList extends AppCompatActivity {
         setContentView(R.layout.activity_caf_list);
         Cafs.add(new item("Commerce","Jammal Naser"));
         Cafs.add(new item("Science","Jammal Naser"));
-        Cafs.add(new item("Literature","Rifaq For Trading & Investment Company"));
+        Cafs.add(new item("Literature","Rifaq For Trading Company"));
         Cafs.add(new item("Meramie Cafe","Food Cort"));
         Cafs.add(new item("Top Shawerma","Food Cort"));
         Cafs.add(new item("Ranoosh cocktail ","Food Cort"));
-        Cafs.add(new item("Nutella","Food Cort"));
+        Cafs.add(new item("Natella","Food Cort"));
         Cafs.add(new item("Toast","Food Cort"));
         Cafs.add(new item("Burger","Food Cort"));
         Cafs.add(new item("Grand Falafel","Abbas Alaloul"));
-        Cafs.add(new item("Aldom",""));
+        Cafs.add(new item("Aldom","Chef Ramzy"));
         recyclerView=findViewById(R.id.cafkistrec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new AdapterRec(getApplicationContext(),Cafs));
