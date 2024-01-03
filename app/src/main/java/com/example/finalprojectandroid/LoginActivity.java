@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void signupclk(View view) {
-        Intent intent=new Intent(Login.this,Signup.class);
+        Intent intent=new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(intent);
     }
 }
