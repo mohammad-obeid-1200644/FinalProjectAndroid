@@ -7,10 +7,24 @@
     android:layout_height="match_parent"
     android:background="@drawable/background2"
     tools:context=".CafList">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/title"
+        android:textStyle="bold|italic"
+        android:layout_marginStart="10dp"
+        android:fontFamily="serif"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"
+        android:textColor="@color/brown"
+        android:text="List of Cafeterias:"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_below="@+id/title"
         android:id="@+id/cafkistrec"/>
 
 </RelativeLayout>
