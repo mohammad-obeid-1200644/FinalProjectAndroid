@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:id="@+id/title"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:layout_marginStart="10dp"
         android:fontFamily="serif"
         android:textSize="30dp"
