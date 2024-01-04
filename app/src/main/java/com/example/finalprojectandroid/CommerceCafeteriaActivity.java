@@ -21,6 +21,9 @@ public class CommerceCafeteriaActivity extends AppCompatActivity implements Recy
         foodItems.add(new FoodItem("food3",1.0,"",R.drawable.baseline_restaurant_24));
         foodItems.add(new FoodItem("food4",1.0,"",R.drawable.baseline_restaurant_24));
         foodItems.add(new FoodItem("food5",1.0,"",R.drawable.baseline_restaurant_24));
+        foodItems.add(new FoodItem("food5",1.0,"",R.drawable.baseline_restaurant_24));
+        foodItems.add(new FoodItem("food5",1.0,"",R.drawable.baseline_restaurant_24));
+        foodItems.add(new FoodItem("food5",1.0,"",R.drawable.baseline_restaurant_24));
 
         recyclerView=findViewById(R.id.FoodRecycler);
         AdapterFoodRecycler adapter=new AdapterFoodRecycler(this,foodItems,this);

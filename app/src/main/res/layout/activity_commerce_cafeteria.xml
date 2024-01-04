@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".CommerceCafeteriaActivity"
     android:layout_width="match_parent"
+    android:background="@drawable/background2"
     android:layout_height="match_parent">
 <RelativeLayout
     android:layout_width="match_parent"
@@ -17,10 +18,10 @@
         android:textStyle="bold"
         android:layout_marginStart="10dp"
         android:fontFamily="serif"
-        android:textSize="30dp"
+        android:textSize="35dp"
         android:layout_marginTop="40dp"
         android:padding="10dp"
-        android:textColor="@color/brown"
+        android:textColor="@color/black"
         android:text="List of food:"/>
 
 

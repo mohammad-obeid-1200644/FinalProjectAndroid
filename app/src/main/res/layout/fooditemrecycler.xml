@@ -3,22 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
-    android:layout_marginTop="15dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    app:cardBackgroundColor="@color/beige2"
-    android:elevation="8dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    app:cardBackgroundColor="@color/orange1"
     app:layout_constraintBaseline_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintEnd_toStartOf="parent"
     app:layout_constraintBaseline_toTopOf="parent"
+    android:layout_marginTop="15dp"
+
     >
+<!--    android:elevation="8dp"-->
+<!--    android:layout_marginBottom="15dp"-->
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_gravity="center"
         >
         <ImageView
             android:layout_width="50dp"
@@ -28,32 +33,44 @@
             android:id="@+id/FoodImg"
             />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/txtFoodName"
             android:layout_toEndOf="@+id/FoodImg"
             android:text="Name"
             android:layout_marginTop="5dp"
-            android:textSize="21sp"
+            android:textSize="25sp"
             android:textColor="@color/black"
             android:fontFamily="serif"
             android:textStyle="bold"
-            android:gravity="center"
+            android:layout_marginStart="20dp"
             android:layout_marginEnd="0dp"
             />
 
         <TextView
             android:id="@+id/txtfoodprice"
-            android:layout_width="match_parent"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="-100dp"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/txtFoodName"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="0NIS"
+            android:text="0"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtCurrency"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/txtfoodprice"
+            android:fontFamily="serif"
+            android:text="NIS"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -64,9 +81,9 @@
             android:layout_toEndOf="@+id/FoodImg"
             android:layout_marginTop="5dp"
             android:textStyle="bold"
-            android:gravity="center"
             android:fontFamily="serif"
-            android:textSize="16sp"
+            android:layout_marginStart="20dp"
+            android:textSize="20sp"
             android:textColor="@color/brown"
             android:layout_below="@id/txtFoodName"
             android:layout_marginBottom="5dp"
@@ -75,10 +92,10 @@
 
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1.2dp"
-            android:background="@color/brown"/>
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1.2dp"-->
+<!--            android:background="@color/brown"/>-->
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
