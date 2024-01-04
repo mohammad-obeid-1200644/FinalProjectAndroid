@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    app:cardBackgroundColor="@color/beige2"
+    android:elevation="8dp"
+    app:layout_constraintBaseline_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintEnd_toStartOf="parent"
+    app:layout_constraintBaseline_toTopOf="parent"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:padding="5dp"
+            android:layout_marginStart="15dp"
+            android:id="@+id/FoodImg"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtFoodName"
+            android:layout_toEndOf="@+id/FoodImg"
+            android:text="Name"
+            android:layout_marginTop="5dp"
+            android:textSize="21sp"
+            android:textColor="@color/black"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginEnd="0dp"
+            />
+
+        <TextView
+            android:id="@+id/txtfoodprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-100dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/txtFoodName"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="0NIS"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtFoodSize"
+            android:text="Size of each caf"
+            android:layout_toEndOf="@+id/FoodImg"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:fontFamily="serif"
+            android:textSize="16sp"
+            android:textColor="@color/brown"
+            android:layout_below="@id/txtFoodName"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="50dp"
+            />
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:background="@color/brown"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

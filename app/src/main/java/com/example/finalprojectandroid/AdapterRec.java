@@ -61,6 +61,8 @@ public class AdapterRec extends RecyclerView.Adapter<AdapterRec.MyViewHolder> {
             });
         }
     }
+
+
 }
 
 

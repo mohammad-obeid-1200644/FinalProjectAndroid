@@ -1,5 +1,6 @@
 package com.example.finalprojectandroid;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,8 +38,9 @@ public class CafList extends AppCompatActivity implements RecyclerViewInterface{
 
     @Override
     public void onCafeteriaClick(int position) {
-        Intent intent=new Intent(CafList.this,SignupActivity.class);
-//        startActivity(intent);
+
+        Intent intent=new Intent(CafList.this,CommerceCafeteriaActivity.class);
+        startActivity(intent);
 
     }
 }
