@@ -4,12 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CafList extends AppCompatActivity {
+public class CafList extends AppCompatActivity implements RecyclerViewInterface{
     private RecyclerView recyclerView;
     private List<item> Cafs=new ArrayList<item>();
     @Override
@@ -28,9 +29,16 @@ public class CafList extends AppCompatActivity {
         Cafs.add(new item("Grand Falafel","Abbas Alaloul"));
         Cafs.add(new item("Aldom","Chef Ramzy"));
         recyclerView=findViewById(R.id.cafkistrec);
+        AdapterRec adapter=new AdapterRec(this,Cafs,this);
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new AdapterRec(getApplicationContext(),Cafs));
 
     }
 
+    @Override
+    public void onCafeteriaClick(int position) {
+        Intent intent=new Intent(CafList.this,SignupActivity.class);
+//        startActivity(intent);
+
+    }
 }

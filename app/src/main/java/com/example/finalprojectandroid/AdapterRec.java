@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,46 +13,54 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class AdapterRec extends RecyclerView.Adapter<MyViewHolder> implements View.OnClickListener {
+public class AdapterRec extends RecyclerView.Adapter<AdapterRec.MyViewHolder> {
+   private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     List<item> cafs;
 
-    public AdapterRec(Context context, List<item> cafs) {
+    public AdapterRec(Context context, List<item> cafs,RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.cafs = cafs;
+        this.recyclerViewInterface=recyclerViewInterface;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.recdesign,parent,false));
+    public AdapterRec.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater =LayoutInflater.from(context);
+        View view=inflater.inflate(R.layout.recdesign,parent,false);
+        return new AdapterRec.MyViewHolder(view,recyclerViewInterface);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        item currentItem = cafs.get(position);
-        holder.CafName.setText(cafs.get(position).getName());
-        holder.CafDesc.setText(cafs.get(position).getOwner());
-        holder.itemView.setOnClickListener(this);
-        holder.itemView.setTag(position);
+    public void onBindViewHolder(@NonNull AdapterRec.MyViewHolder holder, int position) {
+        holder.nametxt.setText(cafs.get(position).getName());
+        holder.ownertxt.setText(cafs.get(position).getOwner());
     }
 
     @Override
     public int getItemCount() {
         return cafs.size();
     }
-
-    public void onClick(View v) {
-        int position = (int) v.getTag();
-
-        item clickedItem = cafs.get(position);
-
-//        Intent intent =new Intent(CafList.class, LoginActivity.class);
-
-        Toast.makeText(context, "Clicked item: " + clickedItem.getName(), Toast.LENGTH_SHORT).show();
-
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView nametxt,ownertxt;
+        public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
+            super(itemView);
+            nametxt=itemView.findViewById(R.id.txtCafName);
+            ownertxt=itemView.findViewById(R.id.txtCafDesc);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(recyclerViewInterface!=null){
+                        int position =getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onCafeteriaClick(position);
+                        }
+                    }
+                }
+            });
+        }
     }
-
 }
 
 
