@@ -35,7 +35,6 @@ public class AdapterFoodRecycler extends RecyclerView.Adapter<AdapterFoodRecycle
     public void onBindViewHolder(@NonNull AdapterFoodRecycler.FoodViewHolder holder, int position) {
         holder.FoodNametxt.setText(foodItems.get(position).getFoodName());
         holder.FoodPricetxt.setText(String.valueOf(foodItems.get(position).getFoodPrice()));
-        holder.FoodSizetxt.setText(foodItems.get(position).getFoodSize());
         holder.Foodimg.setImageResource(foodItems.get(position).getFoodImg());
     }
 
@@ -44,13 +43,12 @@ public class AdapterFoodRecycler extends RecyclerView.Adapter<AdapterFoodRecycle
         return foodItems.size();
     }
     public static class FoodViewHolder extends RecyclerView.ViewHolder{
-        TextView FoodNametxt,FoodPricetxt,FoodSizetxt;
+        TextView FoodNametxt,FoodPricetxt;
         ImageView Foodimg;
         public FoodViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             FoodNametxt=itemView.findViewById(R.id.txtFoodName);
             FoodPricetxt=itemView.findViewById(R.id.txtfoodprice);
-            FoodSizetxt=itemView.findViewById(R.id.txtFoodSize);
             Foodimg=itemView.findViewById(R.id.FoodImg);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".foodInformationActivity"
+    >
+<RelativeLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/foodImage"
+        android:background="@drawable/hotdrink"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="kdkkdkdkd"
+        android:id="@+id/foodNameTxt"
+        android:layout_below="@+id/foodImage"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="120"
+        android:layout_below="@+id/foodNameTxt"
+        android:gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="310dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/curr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nis"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/foodNameTxt"
+        android:layout_toRightOf="@+id/price"
+        android:gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/sizes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Available Sizes: "
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/curr"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rlextras"
+        android:layout_below="@+id/sizes"
+        android:layout_marginTop="10dp"
+
+        >
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        >
+        <RadioButton android:id="@+id/radiosmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Small"/>
+        <RadioButton android:id="@+id/radiomedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medium"/>
+        <RadioButton android:id="@+id/radiolarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Large"/>
+    </RadioGroup>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/additionstxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Additions: "
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/rlextras"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+    <CheckBox
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/extraschkbox1"
+        android:layout_below="@+id/additionstxt"
+        android:text="extra cheese"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/extraschkbox2"
+        android:layout_below="@+id/extraschkbox1"
+        android:layout_marginLeft="10dp"
+        android:text="extra Tomato"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/extraschkbox3"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/extraschkbox2"
+        android:text="extra Onion"
+        />
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/extraschkbox2"
+    android:layout_marginTop="20dp"
+    android:id="@+id/scrollview"
+    >
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="other extras"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:id="@+id/otherextrastxt"
+        />
+</ScrollView>
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/buynow"
+    android:layout_below="@+id/scrollview"
+    android:layout_marginTop="10dp"
+    android:text="Buy Now"
+    />
+
+
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addtocart"
+        android:layout_below="@+id/buynow"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/shoppingcart"
+        />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/backbtn"
+        android:layout_below="@+id/addtocart"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/back"
+        />
+
+</RelativeLayout>
+</ScrollView>

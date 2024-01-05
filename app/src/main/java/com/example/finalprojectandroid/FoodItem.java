@@ -3,17 +3,29 @@ package com.example.finalprojectandroid;
 public class FoodItem {
     private String FoodName;
     private double FoodPrice;
-    private String FoodSize;
     private int FoodImg;
+    private String extras[];
+    private String sizes[];
+    private int quantity;
+
 
     public FoodItem() {
     }
-    public FoodItem(String foodName, double foodPrice, String foodSize,int Foodimg) {
+    public FoodItem(String foodName, double foodPrice,int Foodimg) {
         FoodName = foodName;
         FoodPrice = foodPrice;
-        FoodSize = "Default";
         FoodImg=Foodimg;
     }
+
+    public FoodItem(String foodName, double foodPrice, int foodImg, String[] extras, String[] sizes,int Quantity) {
+        FoodName = foodName;
+        FoodPrice = foodPrice;
+        FoodImg = foodImg;
+        this.extras = extras;
+        this.sizes = sizes;
+        quantity=Quantity;
+    }
+
     public String getFoodName() {
         return FoodName;
     }
@@ -30,14 +42,6 @@ public class FoodItem {
         FoodPrice = foodPrice;
     }
 
-    public String getFoodSize() {
-        return FoodSize;
-    }
-
-    public void setFoodSize(String foodSize) {
-        FoodSize = foodSize;
-    }
-
     public int getFoodImg() {
         return FoodImg;
     }
@@ -45,4 +49,21 @@ public class FoodItem {
     public void setFoodImg(int foodImg) {
         FoodImg = foodImg;
     }
+
+    public String[] getExtras() {
+        return extras;
+    }
+
+    public void setExtras(String[] extras) {
+        this.extras = extras;
+    }
+
+    public String[] getSizes() {
+        return sizes;
+    }
+
+    public void setSizes(String[] sizes) {
+        this.sizes = sizes;
+    }
 }
+
