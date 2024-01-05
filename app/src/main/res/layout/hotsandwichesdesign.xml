@@ -23,11 +23,12 @@
         android:id="@+id/hotSandTxt"
         android:layout_marginStart="10dp"
         android:fontFamily="serif"
-        android:textSize="22dp"
+        android:textSize="26dp"
         android:layout_marginTop="40dp"
         android:padding="10dp"
         android:textColor="@color/black"
-        android:text="List of Sandwiches:"/>
+        android:textStyle="bold"
+        android:text="Sandwiches"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -53,11 +54,12 @@
         android:id="@+id/hotDrinksTxt"
         android:layout_marginStart="10dp"
         android:fontFamily="serif"
-        android:textSize="22dp"
+        android:textSize="26dp"
         android:layout_marginTop="40dp"
         android:padding="10dp"
         android:textColor="@color/black"
-        android:text="List of hot Drinks:"/>
+        android:textStyle="bold"
+        android:text="Hot Drinks"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -83,11 +85,12 @@
         android:id="@+id/coldDrinksTxt"
         android:layout_marginStart="10dp"
         android:fontFamily="serif"
-        android:textSize="22dp"
+        android:textSize="26dp"
         android:layout_marginTop="40dp"
         android:padding="10dp"
         android:textColor="@color/black"
-        android:text="List of Cold Drinks:"/>
+        android:textStyle="bold"
+        android:text="Cold Drinks"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -114,11 +117,12 @@
         android:id="@+id/saladsTxt"
         android:layout_marginStart="10dp"
         android:fontFamily="serif"
-        android:textSize="22dp"
+        android:textSize="26dp"
         android:layout_marginTop="40dp"
         android:padding="10dp"
         android:textColor="@color/black"
-        android:text="List of Salads:"/>
+        android:textStyle="bold"
+        android:text="Salads"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -144,9 +148,10 @@
             android:layout_marginTop="40dp"
             android:fontFamily="serif"
             android:padding="10dp"
-            android:text="List of Sweets:"
+            android:text="Sweets"
             android:textColor="@color/black"
-            android:textSize="22dp" />
+            android:textStyle="bold"
+            android:textSize="26dp" />
 
 
         <androidx.recyclerview.widget.RecyclerView
