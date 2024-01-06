@@ -48,7 +48,7 @@ public class AdapterFoodRecycler extends RecyclerView.Adapter<AdapterFoodRecycle
         public FoodViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             FoodNametxt=itemView.findViewById(R.id.txtFoodName);
-            FoodPricetxt=itemView.findViewById(R.id.txtfoodprice);
+            FoodPricetxt=itemView.findViewById(R.id.txtFoodPrice);
             Foodimg=itemView.findViewById(R.id.FoodImg);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

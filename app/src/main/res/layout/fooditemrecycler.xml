@@ -47,7 +47,7 @@
             />
 
         <TextView
-            android:id="@+id/txtfoodprice"
+            android:id="@+id/txtFoodPrice"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtFoodName"
@@ -66,7 +66,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/txtfoodprice"
+            android:layout_toEndOf="@+id/txtFoodPrice"
             android:layout_below="@+id/txtFoodName"
             android:fontFamily="serif"
             android:text="NIS"

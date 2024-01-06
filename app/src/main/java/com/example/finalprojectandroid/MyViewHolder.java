@@ -10,7 +10,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
      TextView CafName,CafDesc;
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
-        CafName=itemView.findViewById(R.id.txtCafName);
+        CafName=itemView.findViewById(R.id.txtItemName);
         CafDesc=itemView.findViewById(R.id.txtCafDesc);
     }
 }

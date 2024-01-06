@@ -1,12 +1,10 @@
 package com.example.finalprojectandroid;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +44,7 @@ public class AdapterRec extends RecyclerView.Adapter<AdapterRec.MyViewHolder> {
         TextView nametxt,ownertxt;
         public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
-            nametxt=itemView.findViewById(R.id.txtCafName);
+            nametxt=itemView.findViewById(R.id.txtItemName);
             ownertxt=itemView.findViewById(R.id.txtCafDesc);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
