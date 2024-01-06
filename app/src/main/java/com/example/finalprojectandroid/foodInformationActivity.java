@@ -41,4 +41,9 @@ public class foodInformationActivity extends AppCompatActivity {
         Intent inte = new Intent(foodInformationActivity.this, CommerceCafeteriaActivity.class);
         startActivity(inte);
     }
+
+    public void AddToCartClk(View view) {
+        Intent inte = new Intent(foodInformationActivity.this, CartActivity.class);
+        startActivity(inte);
+    }
 }

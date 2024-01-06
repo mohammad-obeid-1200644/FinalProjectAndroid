@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="20dp"
     android:layout_marginTop="15dp"
     android:layout_marginBottom="5dp"
@@ -19,7 +19,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
@@ -32,20 +32,33 @@
             android:layout_marginBottom="5dp"
             android:padding="5dp"
             android:src="@drawable/baseline_restaurant_24" />
-
+        <TextView
+            android:id="@+id/CafName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="70dp"
+            android:layout_toEndOf="@+id/itemImg"
+            android:fontFamily="serif"
+            android:text="Cafeteria Name"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/txtItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/CafName"
             android:layout_marginEnd="70dp"
             android:layout_marginBottom="10dp"
             android:layout_toEndOf="@+id/itemImg"
             android:fontFamily="serif"
             android:text="Name"
             android:textColor="@color/black"
-            android:textSize="27sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -90,19 +103,19 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnPlus"
+                    android:id="@+id/btnPlus1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="incrementOnClick"
-                    android:textStyle="bold"
-                    android:textSize="35dp"
-                    android:textColor="@android:color/holo_orange_dark"
+                    android:layout_marginLeft="8dp"
+                    android:background="@color/transparent"
+                    android:onClick="incrementOnClickcc"
                     android:text="+"
-                    android:background="#00FFFFFF"
-                    android:layout_marginLeft="8dp"/>
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="35dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtQuantity"
+                    android:id="@+id/txtQuantity1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"
@@ -115,26 +128,27 @@
                 </TextView>
 
                 <Button
-                    android:id="@+id/btnMinus"
+                    android:id="@+id/btnMinus1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:onClick="decrementOnClick"
+                    android:onClick="decrementOnClickcc"
                     android:textSize="45dp"
                     android:textColor="@android:color/holo_orange_dark"
                     android:text="-"
-                    android:background="#00FFFFFF" />
+                    android:background="@color/transparent" />
             </LinearLayout>
 
         </LinearLayout>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/bin"
             android:layout_below="@+id/txtItemName"
             android:layout_alignParentEnd="true"
+            android:background="@color/transparent"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"/>
 
@@ -145,90 +159,3 @@
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
-
-    <!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="150dp"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    app:cardCornerRadius="20dp"-->
-<!--    android:layout_marginTop="15dp"-->
-<!--    android:layout_marginBottom="5dp"-->
-<!--    android:layout_marginStart="8dp"-->
-<!--    android:layout_marginEnd="8dp"-->
-<!--    app:cardBackgroundColor="@color/orange1"-->
-<!--    android:elevation="8dp"-->
-<!--    app:cardElevation="3dp"-->
-<!--    app:layout_constraintBaseline_toBottomOf="parent"-->
-<!--    app:layout_constraintEnd_toEndOf="parent"-->
-<!--    app:layout_constraintEnd_toStartOf="parent"-->
-<!--    app:layout_constraintBaseline_toTopOf="parent"-->
-<!--    >-->
-
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        >-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/restImg"-->
-<!--            android:layout_width="105dp"-->
-<!--            android:layout_height="150dp"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_marginEnd="5dp"-->
-<!--            android:layout_marginBottom="5dp"-->
-<!--            android:padding="5dp"-->
-<!--            android:src="@drawable/baseline_restaurant_24" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txtCafName"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="10dp"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:layout_marginEnd="70dp"-->
-<!--            android:layout_marginBottom="50dp"-->
-<!--            android:layout_toEndOf="@+id/restImg"-->
-<!--            android:fontFamily="serif"-->
-<!--            android:text="Name"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="25sp"-->
-<!--            android:textStyle="bold" />-->
-
-
-<!--        <TextView-->
-<!--            android:id="@+id/txtfoodprice"-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@+id/txtCafName"-->
-<!--            android:layout_toRightOf="@+id/restImg"-->
-<!--            android:fontFamily="serif"-->
-<!--            android:gravity="center"-->
-<!--            android:text="0"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txtCurrency"-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--no it does             android:layout_toEndOf="@+id/txtfoodprice"-->
-<!--            android:layout_below="@+id/txtCafName"-->
-<!--            android:fontFamily="serif"-->
-<!--            android:text="NIS"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textStyle="bold" />-->
-
-
-
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="1.2dp"-->
-<!--            android:background="@color/brown"/>-->
-<!--    </RelativeLayout>-->
-
-<!--</androidx.cardview.widget.CardView>-->
