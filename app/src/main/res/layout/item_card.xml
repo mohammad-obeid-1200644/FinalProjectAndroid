@@ -102,17 +102,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnPlus1"
+                <TextView
+                    android:id="@+id/txtQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:background="@color/transparent"
-                    android:onClick="incrementOnClickcc"
-                    android:text="+"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:textSize="35dp"
-                    android:textStyle="bold" />
+                    android:text="Quantity: "
+                    android:gravity="center"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="serif">
+                </TextView>
+
 
                 <TextView
                     android:id="@+id/txtQuantity1"
@@ -124,19 +125,10 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:fontFamily="serif">
-
                 </TextView>
 
-                <Button
-                    android:id="@+id/btnMinus1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:onClick="decrementOnClickcc"
-                    android:textSize="45dp"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:text="-"
-                    android:background="@color/transparent" />
+
+
             </LinearLayout>
 
         </LinearLayout>
