@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class User {
     private String name,email,pass;
+    //todo: add id
 
     public User() {
     }

@@ -22,6 +22,8 @@ public class AdapterRec extends RecyclerView.Adapter<AdapterRec.MyViewHolder> {
         this.recyclerViewInterface=recyclerViewInterface;
     }
 
+
+
     @NonNull
     @Override
     public AdapterRec.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,7 +52,7 @@ public class AdapterRec extends RecyclerView.Adapter<AdapterRec.MyViewHolder> {
                 @Override
                 public void onClick(View view) {
                     if(recyclerViewInterface!=null){
-                        int position =getAdapterPosition();
+                        int position = getAdapterPosition();
                         if(position!=RecyclerView.NO_POSITION){
                             recyclerViewInterface.onCafeteriaClick(position);
                         }

@@ -35,6 +35,12 @@ public class CardItemRecyclerAdapter extends RecyclerView.Adapter<CartItemViewHo
         holder.CartItemPrice.setText(String.valueOf(foodItems.get(position).getPrice()));
         holder.CartItemQuantity.setText(String.valueOf(foodItems.get(position).getQuantity()));
         holder.CartItemImage.setImageResource(foodItems.get(position).getImage());
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            public void onClick(View v) {
+                System.out.println("djdjjdjd");
+            }
+        });
     }
 
     @Override

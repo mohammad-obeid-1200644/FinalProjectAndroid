@@ -25,6 +25,7 @@ public class FoodItem {
         this.sizes = sizes;
         quantity=Quantity;
     }
+    //todo: add id
 
     public String getFoodName() {
         return FoodName;
