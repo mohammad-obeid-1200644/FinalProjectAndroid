@@ -14,7 +14,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -91,7 +90,7 @@ public class CafList extends AppCompatActivity implements RecyclerViewInterface{
     @Override
     public void onCafeteriaClick(int position) {
 
-        Intent intent=new Intent(CafList.this,CommerceCafeteriaActivity.class);
+        Intent intent=new Intent(CafList.this, CafeteriasActivity.class);
         int x=position+1;
         intent.putExtra("pos",""+x);
         startActivity(intent);

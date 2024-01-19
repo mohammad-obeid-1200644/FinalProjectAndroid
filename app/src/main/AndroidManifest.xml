@@ -20,7 +20,7 @@
             android:name=".foodInformationActivity"
             android:exported="false" />
         <activity
-            android:name=".CommerceCafeteriaActivity"
+            android:name=".CafeteriasActivity"
             android:exported="false" />
         <activity
             android:name=".CafList"
