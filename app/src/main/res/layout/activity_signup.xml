@@ -24,7 +24,7 @@
         />
 
     <EditText
-        android:id="@+id/edtFirstName"
+        android:id="@+id/edtName"
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="60dp"
@@ -54,7 +54,6 @@
         android:layout_marginTop="30dp"
         />
 
-
     <EditText
         android:layout_width="300dp"
         android:layout_height="60dp"
@@ -62,7 +61,7 @@
         android:textSize="22sp"
         android:layout_marginStart="8dp"
         android:hint="Enter Password"
-        android:id="@+id/edtpass1"
+        android:id="@+id/edtPassword"
         android:textStyle="bold"
         android:fontFamily="serif"
         android:layout_marginTop="5dp"
@@ -81,7 +80,7 @@
         android:fontFamily="serif"
         android:layout_marginStart="8dp"
         android:hint="Repeat your password"
-        android:id="@+id/edtpass2"
+        android:id="@+id/edtRepeatPassword"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         android:textColor="@color/black"
@@ -93,11 +92,11 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:text="Sign Up"
-        android:onClick="signupclk"
+        android:onClick="signUpOnClk"
         android:padding="8dp"
         android:fontFamily="serif"
         android:textStyle="bold"
-        android:id="@+id/login"
+        android:id="@+id/btnSignUp"
         android:textSize="22sp"
         app:cornerRadius="20dp"
         android:textColor="@color/black"
