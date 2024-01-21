@@ -38,7 +38,6 @@
         android:layout_marginTop="20dp"
         />
 
-
     <EditText
         android:layout_width="300dp"
         android:layout_height="60dp"
@@ -79,7 +78,7 @@
         android:fontFamily="serif"
         android:textStyle="bold"
         android:id="@+id/login"
-        android:onClick="loginclk"
+        android:onClick="logInOnClk"
         android:textSize="22sp"
         app:cornerRadius="20dp"
         android:textColor="@color/black"
@@ -141,7 +140,7 @@
         android:layout_height="wrap_content"
         android:text="Don't have an account? Sign Up"
         android:id="@+id/txtSignUp"
-        android:onClick="signupclk"
+        android:onClick="signUpOnClk"
         android:textSize="20sp"
         app:cornerRadius="20dp"
         android:fontFamily="serif"
