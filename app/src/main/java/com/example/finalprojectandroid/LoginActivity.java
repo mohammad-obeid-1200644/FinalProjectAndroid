@@ -3,7 +3,9 @@ package com.example.finalprojectandroid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -28,6 +30,11 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox chkRememberMe;
     private RequestQueue queue;
     ArrayList<User> users;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    private static final String NAME = "MyPrefsFile";
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         setUpViews();
+        setupSharedPrefs();
+
+        loadUserFromPreferences();
     }
 
     public void setUpViews(){
@@ -61,7 +71,10 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Please Fill in all fields!", Toast.LENGTH_LONG).show();
             return;
         }
-
+        if (isEmpty(name) || isEmpty(password)){
+            Toast.makeText(LoginActivity.this, "Please Fill in all fields!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         String url = "http://10.0.2.2:5000/user";
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,
@@ -69,9 +82,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 users = new ArrayList<>();
-               // boolean userFound = false;
 
                 if (response != null) {
+                    boolean userExists = false;
+
                     for (int i = 0; i < response.length(); i++) {
                         try {
                             JSONObject obj = response.getJSONObject(i);
@@ -81,14 +95,20 @@ public class LoginActivity extends AppCompatActivity {
 
 
                             if (dataBaseName.equals(name) && dataBasePassword.equals(password)){
+                                userExists = true;
+
+                                if (chkRememberMe.isChecked()) {
+                                    saveUserToPreferences(name, password);
+                                }
                                 Intent intent=new Intent(LoginActivity.this, CafList.class);
                                 startActivity(intent);
                             }
                         } catch (JSONException exception) {
                             Log.d("Error", exception.toString());
                         }
+                    } if (!userExists) {
+                        Toast.makeText(LoginActivity.this, "This user does not exist!", Toast.LENGTH_LONG).show();
                     }
-                    Toast.makeText(LoginActivity.this, "This user does not exists!", Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(LoginActivity.this, "No Users in the database!", Toast.LENGTH_LONG).show();
                     Log.d("Error_json", "Null response from the server.");
@@ -108,4 +128,26 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+    public void setupSharedPrefs() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
+    }
+    private void saveUserToPreferences(String username, String password) {
+        editor.putString(USERNAME, username);
+        editor.putString(PASSWORD, password);
+        editor.commit();
+    }
+    private void loadUserFromPreferences() {
+        SharedPreferences preferences = getSharedPreferences(NAME, MODE_PRIVATE);
+        String savedUsername = preferences.getString(USERNAME, "");
+        String savedPassword = preferences.getString(PASSWORD, "");
+
+        if (savedUsername != null && savedPassword != null) {
+            edtName.setText(savedUsername);
+            edtPassword.setText(savedPassword);
+            chkRememberMe.setChecked(true);
+        }
+    }
+
 }
