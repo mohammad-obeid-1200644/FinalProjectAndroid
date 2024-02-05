@@ -80,59 +80,59 @@
 
 
 
-            <TextView
-                android:id="@+id/sizes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Available Sizes: "
-                android:fontFamily="serif"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:textSize="27sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/sizes"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Available Sizes: "-->
+<!--                android:fontFamily="serif"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:textSize="27sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"-->
+<!--                />-->
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rlextras"
-                android:layout_below="@+id/sizes"
-                android:layout_marginTop="10dp">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/rlextras"-->
+<!--                android:layout_below="@+id/sizes"-->
+<!--                android:layout_marginTop="10dp">-->
 
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginLeft="25dp">
+<!--                <RadioGroup-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginLeft="25dp">-->
 
-                    <RadioButton
-                        android:id="@+id/radiosmall"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:fontFamily="serif"
-                        android:text="Small"/>
-                    <RadioButton
-                        android:id="@+id/radiomedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:fontFamily="serif"
-                        android:text="Medium"/>
-                    <RadioButton
-                        android:id="@+id/radiolarge"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:fontFamily="serif"
-                        android:text="Large"/>
-                </RadioGroup>
-            </RelativeLayout>
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/radiosmall"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:fontFamily="serif"-->
+<!--                        android:text="Small"/>-->
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/radiomedium"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:fontFamily="serif"-->
+<!--                        android:text="Medium"/>-->
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/radiolarge"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:fontFamily="serif"-->
+<!--                        android:text="Large"/>-->
+<!--                </RadioGroup>-->
+<!--            </RelativeLayout>-->
 
             <TextView
                 android:id="@+id/additionstxt"
@@ -140,12 +140,12 @@
                 android:layout_height="wrap_content"
                 android:text="Additions: "
                 android:layout_marginLeft="20dp"
-                android:layout_below="@+id/rlextras"
                 android:layout_marginTop="20dp"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:fontFamily="serif"
                 android:textColor="@color/black"
+                android:visibility="gone"
                 />
 
             <CheckBox
@@ -158,8 +158,7 @@
                 android:fontFamily="serif"
                 android:textSize="18dp"
                 android:layout_below="@+id/additionstxt"
-                android:text="extra cheese"
-
+                android:visibility="gone"
                 />
             <CheckBox
                 android:layout_width="wrap_content"
@@ -170,7 +169,7 @@
                 android:textStyle="bold"
                 android:fontFamily="serif"
                 android:textSize="18dp"
-                android:text="extra Tomato"
+                android:visibility="gone"
                 />
             <CheckBox
                 android:layout_width="wrap_content"
@@ -181,7 +180,7 @@
                 android:fontFamily="serif"
                 android:textSize="18dp"
                 android:layout_below="@+id/extraschkbox2"
-                android:text="extra Onion"
+                android:visibility="gone"
                 />
 
             <TextView

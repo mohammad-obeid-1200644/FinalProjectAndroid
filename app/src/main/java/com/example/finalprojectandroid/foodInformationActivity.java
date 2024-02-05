@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,17 +31,22 @@ public class foodInformationActivity extends AppCompatActivity {
 
     Button btnDecrement,btnIncrement;
     TextView foodnametxt,foodpricetxt;
+    CheckBox ex1,ex2,ex3;
     TextView txtQuantity;
     private String name="";
     private double price=0;
     private double u=price;
     int count = 1;
     private static int pos=0;
+    private static int foodid=0;
+    private int [] extras;
+    private static final int flagg=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_information);
+        extras=new int[3];
         queue = Volley.newRequestQueue(this);
         //#todo: add setupviews method
         btnDecrement = findViewById(R.id.btnDecrement);
@@ -48,9 +54,12 @@ public class foodInformationActivity extends AppCompatActivity {
         txtQuantity = findViewById(R.id.txtQuantity);
         foodnametxt=findViewById(R.id.foodNameTxt);
         foodpricetxt=findViewById(R.id.price);
-
-
+        ex1=findViewById(R.id.extraschkbox1);
+        ex2=findViewById(R.id.extraschkbox2);
+        ex3=findViewById(R.id.extraschkbox3);
         getfood();
+        getextras();
+//        fillextras();
     }
 
     public void incrementOnClick(View view){
@@ -92,6 +101,7 @@ public class foodInformationActivity extends AppCompatActivity {
 
                             name = response.getString("FoodName");
                             price = response.getDouble("FoodPrice");
+                            foodid = response.getInt("FoodID");
                             u=price;
                             foodnametxt.setText(name);
                             foodpricetxt.setText(String.valueOf(price));
@@ -111,13 +121,138 @@ public class foodInformationActivity extends AppCompatActivity {
 
 
 
+    public void getextras() {
+        Intent intent = getIntent();
+        int pos = Integer.valueOf(intent.getStringExtra("mohammad"));
+        String url = "http://10.0.2.2:5000/foodextra/"+pos ;
+        Log.d("URL_Request", url);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,
+                null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for(int flagg=0; flagg<response.length();flagg++){
+                        JSONObject obj = response.getJSONObject(flagg);
+                        int id = obj.getInt("ExtraID");
+                        extras[flagg]=id;
+                        String url = "http://10.0.2.2:5000/extra/" + id;
+                        Log.d("URL_Request", url);
+                        int finalFlagg = flagg;
+                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,
+                                null, new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    String obj = response.getString("ExtraName");
+                                    if(finalFlagg ==0){
+                                        ex1.setVisibility(View.VISIBLE);
+                                        ex1.setText(obj);
+                                    }
+                                    if(finalFlagg ==1){
+                                        ex2.setVisibility(View.VISIBLE);
+                                        ex2.setText(obj);
+                                    }
+                                    if(finalFlagg ==2){
+                                        ex3.setVisibility(View.VISIBLE);
+                                        ex3.setText(obj);
+                                    }
+
+
+                                } catch (JSONException e) {
+                                    Log.e("JSON_Parsing_Error", e.toString());
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("Network_Error", error.toString());
+                            }
+
+                        });
+                        queue.add(request);
+
+                    }
+
+
+
+                } catch (JSONException e) {
+                    Log.e("JSON_Parsing_Error", e.toString());
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Network_Error", error.toString());
+            }
+        });
+        queue.add(request);
+    }
+
 
     public void backtolistclk(View view) {
         Intent inte = new Intent(foodInformationActivity.this, CafeteriasActivity.class);
         startActivity(inte);
     }
 
+
+    private void add_to_cart(String Name, int Quant, double TotPrice,String extras, int CustID){
+        String url = "http://10.0.2.2:5000/addcartitem";
+
+        RequestQueue queue = Volley.newRequestQueue(foodInformationActivity.this);
+
+        JSONObject jsonParams = new JSONObject();
+        try {
+            jsonParams.put("Name", Name);
+            jsonParams.put("Quantity", Quant);
+            jsonParams.put("TotalPrice", TotPrice);
+            jsonParams.put("extras", extras);
+            jsonParams.put("customerID", CustID);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonParams,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String str = "";
+                        try {
+                            str = response.getString("result");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+//
+                        Toast.makeText(foodInformationActivity.this, str,
+                                Toast.LENGTH_SHORT).show();
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VolleyError", error.toString());
+                    }
+                }
+        );
+        queue.add(request);
+    }
     public void AddToCartClk(View view) {
+        int x=Integer.valueOf(txtQuantity.getText().toString());
+        String extras="";
+        if(!ex1.getText().equals("")){
+            extras+=ex1.getText().toString();
+        }
+        if(!ex2.getText().equals("")){
+            extras+=", "+ex2.getText().toString();
+        }
+        if(!ex3.getText().equals("")){
+            extras+=", "+ex3.getText().toString();
+        }
+        add_to_cart(name,x,price*x,extras,1);
         Intent inte = new Intent(foodInformationActivity.this, CartActivity.class);
         startActivity(inte);
     }
