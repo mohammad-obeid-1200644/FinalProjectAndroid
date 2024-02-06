@@ -127,8 +127,6 @@ public class foodInformationActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-
-
                             name = response.getString("FoodName");
                             price = response.getDouble("FoodPrice");
                             foodid = response.getInt("FoodID");
