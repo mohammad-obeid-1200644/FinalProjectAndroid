@@ -43,13 +43,10 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getfood();
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.hotsandwichesdesign);
         queue = Volley.newRequestQueue(this);
-
+        getfood();
 //        Toast.makeText(this,"position: "+pos,Toast.LENGTH_LONG).show();
         setupviews();
 
@@ -254,6 +251,9 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
 
     public void onCafeteriaClick(int position, String recyclerViewName) {
 //        Toast.makeText(this, "Clicked on item at position " + position + " in recycler view " + recyclerViewName, Toast.LENGTH_LONG).show();
+//        Intent inten= getIntent();
+//        String xl=inten.getStringExtra("CafeteriaName");
+//        Toast.makeText(this,xl, Toast.LENGTH_LONG).show();
 
         int rec = Integer.parseInt(recyclerViewName);
 
@@ -262,6 +262,10 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
         Intent intent = new Intent(CafeteriasActivity.this, foodInformationActivity.class);
 //        Log.d("mmkkmmkkmkmkm","blbllb: "+x);
         intent.putExtra("mohammad", x);
+        Intent hhint=getIntent();
+        String pos=hhint.getStringExtra("pos");
+        intent.putExtra("Cafpos", pos);
+
         startActivity(intent);
     }
 

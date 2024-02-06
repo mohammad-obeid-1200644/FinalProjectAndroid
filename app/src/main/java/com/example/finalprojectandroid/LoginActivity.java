@@ -139,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.commit();
     }
     private void loadUserFromPreferences() {
-        SharedPreferences preferences = getSharedPreferences(NAME, MODE_PRIVATE);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String savedUsername = preferences.getString(USERNAME, "");
         String savedPassword = preferences.getString(PASSWORD, "");
 

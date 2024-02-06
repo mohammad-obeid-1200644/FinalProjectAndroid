@@ -2,6 +2,7 @@ package com.example.finalprojectandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,6 +42,7 @@ public class foodInformationActivity extends AppCompatActivity {
     private static int foodid=0;
     private int [] extras;
     private static final int flagg=0;
+    String cafename="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class foodInformationActivity extends AppCompatActivity {
         ex3=findViewById(R.id.extraschkbox3);
         getfood();
         getextras();
+        getcafName();
 //        fillextras();
     }
 
@@ -84,7 +87,34 @@ public class foodInformationActivity extends AppCompatActivity {
         }
     }
 
+    public void getcafName(){
+        Intent intent = getIntent();
+        int pos = Integer.valueOf(intent.getStringExtra("Cafpos"));
+//        Log.d("lallakkak",pos+"lllll");
+        String url = "http://10.0.2.2:5000/cafeteria/"+pos;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String name = response.getString("CafName");
+                    cafename=name;
+                    Intent inten=new Intent(foodInformationActivity.this, CartActivity.class);
+                    inten.putExtra("CafeteriaName",name);
+                } catch (JSONException e) {
+                    Log.d("Volley_error", e.toString());
+                }
+            }}, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Volley_error", error.toString());
+                System.out.println("eeee:::::::::::::::::eeeeee");
+            }
+        });
 
+        // Add the request to the request queue
+        queue.add(request);
+    }
 
 
     public void getfood() {
@@ -131,54 +161,54 @@ public class foodInformationActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 try {
-                    for(int flagg=0; flagg<response.length();flagg++){
-                        JSONObject obj = response.getJSONObject(flagg);
-                        int id = obj.getInt("ExtraID");
-                        extras[flagg]=id;
-                        String url = "http://10.0.2.2:5000/extra/" + id;
-                        Log.d("URL_Request", url);
-                        int finalFlagg = flagg;
-                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,
-                                null, new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                try {
-                                    String obj = response.getString("ExtraName");
-                                    if(finalFlagg ==0){
-                                        ex1.setVisibility(View.VISIBLE);
-                                        ex1.setText(obj);
-                                    }
-                                    if(finalFlagg ==1){
-                                        ex2.setVisibility(View.VISIBLE);
-                                        ex2.setText(obj);
-                                    }
-                                    if(finalFlagg ==2){
-                                        ex3.setVisibility(View.VISIBLE);
-                                        ex3.setText(obj);
-                                    }
+
+                    //Log.d("checkkkk", response.toString());
+                        for (int flagg = 0; flagg < response.length(); flagg++) {
+                            JSONObject obj = response.getJSONObject(flagg);
+                            int id = obj.getInt("ExtraID");
+                            extras[flagg] = id;
+                            String url = "http://10.0.2.2:5000/extra/" + id;
+                            Log.d("URL_Request", url);
+                            int finalFlagg = flagg;
+                            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,
+                                    null, new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try {
+                                        String obj = response.getString("ExtraName");
+                                        if (finalFlagg == 0) {
+                                            ex1.setVisibility(View.VISIBLE);
+                                            ex1.setText(obj);
+                                        }
+                                        if (finalFlagg == 1) {
+                                            ex2.setVisibility(View.VISIBLE);
+                                            ex2.setText(obj);
+                                        }
+                                        if (finalFlagg == 2) {
+                                            ex3.setVisibility(View.VISIBLE);
+                                            ex3.setText(obj);
+                                        }
 
 
-                                } catch (JSONException e) {
-                                    Log.e("JSON_Parsing_Error", e.toString());
+                                    } catch (JSONException e) {
+                                        Log.e("JSON_Parsing_Error", e.toString());
+                                    }
                                 }
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.e("Network_Error", error.toString());
-                            }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.e("Network_Error", error.toString());
+                                }
 
-                        });
-                        queue.add(request);
+                            });
+                            queue.add(request);
 
+                        }
+
+
+                    } catch(JSONException e){
+                        Log.e("JSON_Parsing_Error", e.toString());
                     }
-
-
-
-                } catch (JSONException e) {
-                    Log.e("JSON_Parsing_Error", e.toString());
-                }
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -187,8 +217,7 @@ public class foodInformationActivity extends AppCompatActivity {
             }
         });
         queue.add(request);
-    }
-
+}
 
     public void backtolistclk(View view) {
         Intent inte = new Intent(foodInformationActivity.this, CafeteriasActivity.class);
@@ -196,7 +225,7 @@ public class foodInformationActivity extends AppCompatActivity {
     }
 
 
-    private void add_to_cart(String Name, int Quant, double TotPrice,String extras, int CustID){
+    private void add_to_cart( String Name, int Quant, double TotPrice,String extras,String cafname, int CustID){
         String url = "http://10.0.2.2:5000/addcartitem";
 
         RequestQueue queue = Volley.newRequestQueue(foodInformationActivity.this);
@@ -208,9 +237,12 @@ public class foodInformationActivity extends AppCompatActivity {
             jsonParams.put("TotalPrice", TotPrice);
             jsonParams.put("extras", extras);
             jsonParams.put("customerID", CustID);
+            jsonParams.put("CafName", cafname);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        Log.d("additeminfo","Name: "+ Name+"\nQuant: "+Quant+"\nTotPrice: "+TotPrice+"\nextrs: "+extras+"\ncustID: "+CustID+"\nCafName: "+cafename);
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
@@ -244,15 +276,27 @@ public class foodInformationActivity extends AppCompatActivity {
         int x=Integer.valueOf(txtQuantity.getText().toString());
         String extras="";
         if(!ex1.getText().equals("")){
-            extras+=ex1.getText().toString();
+            if(ex1.isChecked())
+                extras+=ex1.getText().toString();
         }
         if(!ex2.getText().equals("")){
-            extras+=", "+ex2.getText().toString();
+            if(ex2.isChecked())
+                if(ex1.isChecked())
+                extras+=", "+ex2.getText().toString();
+                else
+                    extras+=ex2.getText().toString();
+
         }
         if(!ex3.getText().equals("")){
-            extras+=", "+ex3.getText().toString();
+            if(ex3.isChecked())
+                if(ex1.isChecked() || ex2.isChecked())
+                    extras+=", "+ex3.getText().toString();
+                else
+                    extras+=ex3.getText().toString();
         }
-        add_to_cart(name,x,price*x,extras,1);
+        if(extras.equals(""))
+            extras="No extras";
+        add_to_cart(name,x,price*x,extras,cafename,1);
         Intent inte = new Intent(foodInformationActivity.this, CartActivity.class);
         startActivity(inte);
     }

@@ -1,6 +1,7 @@
 package com.example.finalprojectandroid;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,11 @@ public class CardItemRecyclerAdapter extends RecyclerView.Adapter<CartItemViewHo
     Context context;
     List<CartItem> foodItems;
 
-    public CardItemRecyclerAdapter(Context context, List<CartItem> foodItems) {
+    private OnItemDeleteListener deleteListener;
+    public CardItemRecyclerAdapter(Context context, List<CartItem> foodItems, OnItemDeleteListener deleteListener) {
         this.context = context;
         this.foodItems = foodItems;
+        this.deleteListener = deleteListener;
     }
 
     @NonNull
@@ -36,9 +39,12 @@ public class CardItemRecyclerAdapter extends RecyclerView.Adapter<CartItemViewHo
         holder.CartItemQuantity.setText(String.valueOf(foodItems.get(position).getQuantity()));
         holder.CartItemImage.setImageResource(foodItems.get(position).getImage());
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            //@Override
+            @Override
             public void onClick(View v) {
-                System.out.println("djdjjdjd");
+                if (deleteListener != null) {
+                    deleteListener.onDeleteClick(position);
+
+                }
             }
         });
     }
@@ -46,5 +52,13 @@ public class CardItemRecyclerAdapter extends RecyclerView.Adapter<CartItemViewHo
     @Override
     public int getItemCount() {
         return foodItems.size();
+    }
+    public int updateItemCount() {
+        return foodItems.size()-1;
+    }
+
+
+    public interface OnItemDeleteListener {
+        void onDeleteClick(int position);
     }
 }

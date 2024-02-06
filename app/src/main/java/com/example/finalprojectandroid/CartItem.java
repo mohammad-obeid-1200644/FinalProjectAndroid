@@ -5,15 +5,17 @@ public class CartItem {
     private String CafName,FoodName;
     private double price;
     private int quantity;
+    private int id;
 
     public CartItem() {}
 
-    public CartItem(String cafName, String foodName, double price, int quantity,int image) {
+    public CartItem(int id,String cafName, String foodName, double price, int quantity,int image) {
         CafName = cafName;
         FoodName = foodName;
         this.price = price;
-        this.quantity = 1;
+        this.quantity = quantity;
         this.image = image;
+        this.id=id;
     }
     public String getCafName() {
         return CafName;
@@ -52,5 +54,13 @@ public class CartItem {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
