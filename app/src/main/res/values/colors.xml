@@ -5,6 +5,11 @@
 
     <color name="pink">#FFC0CB</color>
 
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimaryDark">#FF5722</color>
+
+
+    <color name="orange3">#FF8D3A</color>
 
     <color name="orange">#FFC34D</color>
     <color name="orange1">#FFCF6E</color>

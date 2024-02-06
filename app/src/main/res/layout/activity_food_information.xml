@@ -217,17 +217,6 @@
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
 
-<!--        <ImageButton -->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:id="@+id/backbtn"-->
-<!--            android:src="@drawable/back"-->
-<!--            android:layout_marginStart="0dp"-->
-<!--            android:background="#00FFFFFF"-->
-<!--            />  -->
-
-
 
         <ImageButton
             android:layout_width="0dp"

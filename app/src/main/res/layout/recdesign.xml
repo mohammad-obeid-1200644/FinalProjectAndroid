@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    app:cardCornerRadius="13dp"
     android:layout_marginTop="15dp"
     android:layout_marginBottom="5dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    app:cardBackgroundColor="@color/orange1"
-    android:elevation="8dp"
-    app:layout_constraintBaseline_toBottomOf="parent"
+    app:cardBackgroundColor="@color/orange3"
+    android:elevation="100dp"
+    app:layout_constraintVertical_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintEnd_toStartOf="parent"
-    app:layout_constraintBaseline_toTopOf="parent"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_gravity="center"
         >
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:padding="5dp"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/baseline_restaurant_24"
+            android:layout_width="110dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/chefhat"
+            android:background="#00FFFFFF"
             android:id="@+id/itemImg"
             />
         <TextView
@@ -37,7 +37,7 @@
             android:layout_toEndOf="@+id/itemImg"
             android:text="Name"
             android:layout_marginTop="5dp"
-            android:textSize="21sp"
+            android:textSize="25sp"
             android:textColor="@color/black"
             android:fontFamily="serif"
             android:textStyle="bold"
@@ -55,17 +55,14 @@
             android:textStyle="bold"
             android:gravity="center"
             android:fontFamily="serif"
-            android:textSize="16sp"
-            android:textColor="@color/brown"
+            android:textSize="18sp"
+            android:textColor="@color/black"
             android:layout_below="@id/txtItemName"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="50dp"
             />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1.2dp"
-            android:background="@color/brown"/>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
