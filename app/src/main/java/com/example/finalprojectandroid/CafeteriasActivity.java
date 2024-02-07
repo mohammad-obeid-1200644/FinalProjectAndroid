@@ -264,7 +264,9 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
         Intent hhint=getIntent();
         String pos=hhint.getStringExtra("pos");
         intent.putExtra("Cafpos", pos);
-
+        String la = hhint.getStringExtra("LoggedinUserID");
+//        Log.d("checkmohammadidid",la);
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
 

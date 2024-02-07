@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject obj = response.getJSONObject(i);
                             String dataBaseName = obj.getString("Name");
                             String dataBasePassword = obj.getString("Password");
-
+                            String id=obj.getString("ID");
 
 
                             if (dataBaseName.equals(name) && dataBasePassword.equals(password)){
@@ -101,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                                     saveUserToPreferences(name, password);
                                 }
                                 Intent intent=new Intent(LoginActivity.this, CafList.class);
+                                intent.putExtra("LoggedinUserID",id);
                                 startActivity(intent);
                             }
                         } catch (JSONException exception) {

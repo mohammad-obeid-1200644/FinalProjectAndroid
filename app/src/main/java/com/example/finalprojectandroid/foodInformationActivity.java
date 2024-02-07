@@ -294,8 +294,11 @@ public class foodInformationActivity extends AppCompatActivity {
         }
         if(extras.equals(""))
             extras="No extras";
-        add_to_cart(name,x,price*x,extras,cafename,1);
+        Intent hhint=getIntent();
+        String la = hhint.getStringExtra("LoggedinUserID");
+        add_to_cart(name,x,price*x,extras,cafename,Integer.valueOf(la));
         Intent inte = new Intent(foodInformationActivity.this, CartActivity.class);
+        inte.putExtra("LoggedinUserID",la);
         startActivity(inte);
     }
 }
