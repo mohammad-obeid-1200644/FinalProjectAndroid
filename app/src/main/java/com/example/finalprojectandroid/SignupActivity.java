@@ -2,6 +2,7 @@ package com.example.finalprojectandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -53,6 +54,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signUpOnClk(View view) {
+        Intent intent=new Intent(SignupActivity.this, CafList.class);
         String userName = edtName.getText().toString();
         String userEmail = edtEmail.getText().toString();
         String userPassword = edtPassword.getText().toString();
@@ -102,6 +104,27 @@ public class SignupActivity extends AppCompatActivity {
 
                             if (!userFound) {
                                 addUser(userName, userEmail, userPassword);
+                                String url1 = "http://10.0.2.2:5000/lastuserinserted";
+                                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url1,
+                                        null, new Response.Listener<JSONObject>() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                        try {
+                                            int id = response.getInt("MAX(ID)")+1;
+                                            intent.putExtra("LoggedinUserID",id+"");
+                                            startActivity(intent);
+                                        } catch (JSONException e) {
+                                            Log.e("JSON_Parsing_Error", e.toString());
+                                        }
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Log.e("Network_Error", error.toString());
+                                    }
+                                });
+                                queue.add(request);
+
                             }
                         }
                     }, new Response.ErrorListener() {

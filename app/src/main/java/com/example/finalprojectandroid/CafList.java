@@ -95,6 +95,8 @@ public class CafList extends AppCompatActivity implements RecyclerViewInterface{
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");
         intent.putExtra("LoggedinUserID",la);
+//        Log.d("moehameasLastTEst",la);
+
         startActivity(intent);
     }
 }

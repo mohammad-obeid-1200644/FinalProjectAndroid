@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject obj = response.getJSONObject(i);
                             String dataBaseName = obj.getString("Name");
                             String dataBasePassword = obj.getString("Password");
-                            String id=obj.getString("ID");;
+                            String id=obj.getString("ID");
 
 
                             if (dataBaseName.equals(name) && dataBasePassword.equals(password)){
