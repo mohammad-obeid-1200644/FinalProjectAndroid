@@ -56,7 +56,6 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
         adapter4 = new AdapterFoodRecycler(this, Sweets, this, "4");
 
 
-
     }
 
 
@@ -88,12 +87,13 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
                             String Name = obj.getString("FoodName");
                             Log.d("Food_Object", obj.toString());
                             double price = Double.parseDouble(obj.getString("FoodPrice"));
+                            int imgNum = Integer.parseInt((obj.getString("FoodImg")));
 
                             String cat = obj.getString("FoodCategory");
 
                             if (cat.toLowerCase().trim().equals("sandwiches")) {
                                 counter1++;
-                                Sandwiches.add(new FoodItem(Name, price,R.drawable.sandwiches));
+                                Sandwiches.add(new FoodItem(Name, price,imgNum));
                             }
                             if (cat.toLowerCase().equals("cold drinks")) {
                                 counter2++;
