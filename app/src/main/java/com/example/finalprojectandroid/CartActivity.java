@@ -74,7 +74,9 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
 
     public void getitems() {
-        String url = "http://10.0.2.2:5000/cartitem/1";
+        Intent hhint=getIntent();
+        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+        String url = "http://10.0.2.2:5000/cartitem/"+la;
         Log.d("URL_Request", url);
         Intent intg = getIntent();
         String c = intg.getStringExtra("CafeteriaName");
@@ -141,8 +143,9 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                 }
         );
         queue.add(request);
-
-        String url1 = "http://10.0.2.2:5000/cartitem/1";
+        Intent hhint=getIntent();
+        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+        String url1 = "http://10.0.2.2:5000/cartitem/"+la;
         JsonArrayRequest request1 = new JsonArrayRequest(Request.Method.GET, url1,
                 null, new Response.Listener<JSONArray>() {
             @Override
@@ -181,7 +184,9 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
 
     public void ordernowClick(View view) {
-        add_order(totprice, 1);
+        Intent hhint=getIntent();
+        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+        add_order(totprice, la);
         getlastinsertedorderID();
 
         Iterator<CartItem> iterator = items.iterator();
@@ -218,8 +223,10 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         String url = "http://10.0.2.2:5000/createorder";
         JSONObject jsonParams = new JSONObject();
         try {
+            Intent hhint=getIntent();
+            int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
             jsonParams.put("TotalPrice", TotPrice);
-            jsonParams.put("UserID", userID);
+            jsonParams.put("UserID", la);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -252,8 +259,9 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                 try {
                     int id = response.getInt("MAX(OrderID)");
                     Log.d("MohammadKadoumiTest", id + "");
-
-                    String url1 = "http://10.0.2.2:5000/cartitem/1";
+                    Intent hhint=getIntent();
+                    int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+                    String url1 = "http://10.0.2.2:5000/cartitem/"+la;
                     JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url1,
                             null, new Response.Listener<JSONArray>() {
                         @Override
@@ -283,7 +291,9 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                                             new Response.Listener<JSONObject>() {
                                                 @Override
                                                 public void onResponse(JSONObject response) {
-                                                    remove_cartItems(1);
+                                                    Intent hhint=getIntent();
+                                                    int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+                                                    remove_cartItems(la);
                                                 }
                                             },
                                             new Response.ErrorListener() {
@@ -324,7 +334,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
 
     private void remove_cartItems(int id) {
-        String url = "http://10.0.2.2:5000/deletecartitem/1";
+        String url = "http://10.0.2.2:5000/deletecartitem/"+id;
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.DELETE,
                 url, null,

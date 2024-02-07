@@ -89,11 +89,12 @@ public class CafList extends AppCompatActivity implements RecyclerViewInterface{
 
     @Override
     public void onCafeteriaClick(int position) {
-
         Intent intent=new Intent(CafList.this, CafeteriasActivity.class);
         int x=position+1;
         intent.putExtra("pos",""+x);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
-
     }
 }
