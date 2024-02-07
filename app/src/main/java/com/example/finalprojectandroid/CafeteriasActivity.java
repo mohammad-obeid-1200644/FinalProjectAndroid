@@ -88,28 +88,29 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
                             Log.d("Food_Object", obj.toString());
                             double price = Double.parseDouble(obj.getString("FoodPrice"));
                             int imgNum = Integer.parseInt((obj.getString("FoodImg")));
-
+String xxx="";
                             String cat = obj.getString("FoodCategory");
 
                             if (cat.toLowerCase().trim().equals("sandwiches")) {
                                 counter1++;
                                 Sandwiches.add(new FoodItem(Name, price,imgNum));
+//                                Log.d("imagesTest",R.drawable.p2+"");
                             }
                             if (cat.toLowerCase().equals("cold drinks")) {
                                 counter2++;
-                                ColdDrinks.add(new FoodItem(Name, price, R.drawable.sandwiches));
+                                ColdDrinks.add(new FoodItem(Name, price, imgNum));
                             }
                             if (cat.toLowerCase().equals("hot drinks")) {
                                 counter3++;
-                                HotDrinks.add(new FoodItem(Name, price, R.drawable.sandwiches));
+                                HotDrinks.add(new FoodItem(Name, price,imgNum));
                             }
                             if (cat.toLowerCase().equals("salads")) {
                                 counter4++;
-                                Salads.add(new FoodItem(Name, price, R.drawable.sandwiches));
+                                Salads.add(new FoodItem(Name, price, imgNum));
                             }
                             if (cat.toLowerCase().equals("sweets")) {
                                 counter5++;
-                                Sweets.add(new FoodItem(Name, price, R.drawable.sandwiches));
+                                Sweets.add(new FoodItem(Name, price, imgNum));
                             }
                         }
                     }

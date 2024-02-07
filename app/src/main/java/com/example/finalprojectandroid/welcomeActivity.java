@@ -13,15 +13,6 @@ public class welcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        Log.d("picNum", R.drawable.p5+"");
-        Log.d("picNum", R.drawable.p6+"");
-        Log.d("picNum", R.drawable.p7+"");
-        Log.d("picNum", R.drawable.p8+"");
-        Log.d("picNum", R.drawable.p9p88 +"");
-        Log.d("picNum", R.drawable.p10+"");
-
-
     }
 
     public void logInOnClk1(View view) {
