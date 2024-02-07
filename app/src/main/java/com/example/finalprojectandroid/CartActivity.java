@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity implements CardItemRecyclerAdapter.OnItemDeleteListener {
@@ -44,6 +45,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
     private ImageView CartItemImage;
     private TextView CartResturantName, CartFoodItemName, CartItemPrice, CartItemQuantity;
     private RelativeLayout relativeLayout;
+    Button orderbtn;
     private static double totprice = 0;
 
     @Override
@@ -67,6 +69,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         recyclerView = findViewById(R.id.cafkistrec);// todo: add setupviews method
         relativeLayout = findViewById(R.id.rl1);
         totalPricetxt = findViewById(R.id.totalpricetxt);
+        orderbtn=findViewById(R.id.orderbtn);
     }
 
 
@@ -145,6 +148,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
             @Override
             public void onResponse(JSONArray response) {
                 try {
+                    totprice = 0;
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject obj = response.getJSONObject(i);
                         double price = obj.getDouble("Total Price");
@@ -166,13 +170,11 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
     @Override
     public void onDeleteClick(int position) {
-        totprice = 0;
         int x = items.get(position).getId();
         items.remove(position);
         remove_from_cart(x);
         adapter.notifyItemRemoved(position);
         adapter.notifyItemRangeChanged(position, adapter.getItemCount());
-
 //        relativeLayout.requestLayout();
 
     }
@@ -182,16 +184,21 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         add_order(totprice, 1);
         getlastinsertedorderID();
 
-        for(int i=0;i<items.size();i++){
-            items.remove(i);
-            adapter.notifyItemRemoved(i);
-            adapter.notifyItemRangeChanged(i, adapter.getItemCount());
+        Iterator<CartItem> iterator = items.iterator();
+        while (iterator.hasNext()) {
+            CartItem item = iterator.next();
+            iterator.remove();
         }
-//        adapter.notifyItemRemoved(0);
-//        adapter.notifyItemRangeChanged(0, adapter.getItemCount());
-        totprice=0;
+
+        adapter.notifyDataSetChanged();
+
+        totprice = 0;
+        totalPricetxt.setText(String.valueOf(totprice));
+        orderbtn.setVisibility(View.GONE);
+
 
     }
+
 
 //    public void incrementOnClickcc(View view){
 //        count+=1;
