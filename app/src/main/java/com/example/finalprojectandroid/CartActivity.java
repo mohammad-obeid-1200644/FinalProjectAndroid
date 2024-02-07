@@ -172,14 +172,25 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         remove_from_cart(x);
         adapter.notifyItemRemoved(position);
         adapter.notifyItemRangeChanged(position, adapter.getItemCount());
+
 //        relativeLayout.requestLayout();
 
     }
 
 
     public void ordernowClick(View view) {
-//        add_order(totprice, 1);
+        add_order(totprice, 1);
         getlastinsertedorderID();
+
+        for(int i=0;i<items.size();i++){
+            items.remove(i);
+            adapter.notifyItemRemoved(i);
+            adapter.notifyItemRangeChanged(i, adapter.getItemCount());
+        }
+//        adapter.notifyItemRemoved(0);
+//        adapter.notifyItemRangeChanged(0, adapter.getItemCount());
+        totprice=0;
+
     }
 
 //    public void incrementOnClickcc(View view){
@@ -252,7 +263,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                                     String url = "http://10.0.2.2:5000/addorderitems";
                                     JSONObject jsonParams1 = new JSONObject();
                                     try {
-                                        jsonParams1.put("OrderID", id);
+                                        jsonParams1.put("OrderID", (id+1));
                                         jsonParams1.put("Price", price);
                                         jsonParams1.put("CafName", cfname);
                                     } catch (JSONException e) {
@@ -265,6 +276,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                                             new Response.Listener<JSONObject>() {
                                                 @Override
                                                 public void onResponse(JSONObject response) {
+                                                    remove_cartItems(1);
                                                 }
                                             },
                                             new Response.ErrorListener() {
@@ -302,4 +314,25 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         queue.add(request);
     }
 
+
+
+    private void remove_cartItems(int id) {
+        String url = "http://10.0.2.2:5000/deletecartitem/1";
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.DELETE,
+                url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VolleyError", error.toString());
+                    }
+                }
+        );
+        queue.add(request);
+    }
 }
