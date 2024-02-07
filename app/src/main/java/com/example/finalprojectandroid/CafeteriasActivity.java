@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -44,7 +43,7 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.hotsandwichesdesign);
+        setContentView(R.layout.menudesign);
         queue = Volley.newRequestQueue(this);
         getfood();
 //        Toast.makeText(this,"position: "+pos,Toast.LENGTH_LONG).show();
@@ -94,23 +93,23 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
 
                             if (cat.toLowerCase().trim().equals("sandwiches")) {
                                 counter1++;
-                                Sandwiches.add(new FoodItem(Name, price, 2131165421));
+                                Sandwiches.add(new FoodItem(Name, price,R.drawable.sandwiches));
                             }
                             if (cat.toLowerCase().equals("cold drinks")) {
                                 counter2++;
-                                ColdDrinks.add(new FoodItem(Name, price, 2131165421));
+                                ColdDrinks.add(new FoodItem(Name, price, R.drawable.sandwiches));
                             }
                             if (cat.toLowerCase().equals("hot drinks")) {
                                 counter3++;
-                                HotDrinks.add(new FoodItem(Name, price, 2131165421));
+                                HotDrinks.add(new FoodItem(Name, price, R.drawable.sandwiches));
                             }
                             if (cat.toLowerCase().equals("salads")) {
                                 counter4++;
-                                Salads.add(new FoodItem(Name, price, 2131165421));
+                                Salads.add(new FoodItem(Name, price, R.drawable.sandwiches));
                             }
                             if (cat.toLowerCase().equals("sweets")) {
                                 counter5++;
-                                Sweets.add(new FoodItem(Name, price, 2131165421));
+                                Sweets.add(new FoodItem(Name, price, R.drawable.sandwiches));
                             }
                         }
                     }
