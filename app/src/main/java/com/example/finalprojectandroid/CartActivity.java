@@ -165,7 +165,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
                         });
                         queue.add(request1);
-
+//                        request1
                     }
                 },
                 new Response.ErrorListener() {
