@@ -363,9 +363,4 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         );
         queue.add(request);
     }
-
-    public void onBackButtonClick(View view){
-        Intent intent=new Intent(CartActivity.this, foodInformationActivity.class);
-        startActivity(intent);
-    }
 }
