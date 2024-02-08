@@ -19,14 +19,6 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/userImg"
-            android:layout_marginTop="3dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/userlogo" />
-
         <TextView
             android:id="@+id/cafNameTxt"
             android:layout_width="wrap_content"
@@ -55,6 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/back"
+            android:clickable="true"
+            android:onClick="backOnClk1"
             android:layout_marginEnd="2dp"/>
 
         <ImageView
@@ -63,6 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/home"
+            android:clickable="true"
+            android:onClick="homeOnClk"
             android:layout_marginEnd="8dp"/>
 
         <ImageView
@@ -71,6 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/shoppingcart"
+            android:clickable="true"
+            android:onClick="cartOnClk1"
             android:layout_marginEnd="8dp"/>
 
         <ImageView
@@ -79,6 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:onClick="userOnClk1"
             android:src="@drawable/userlogo"/>
 
     </LinearLayout>

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,13 +30,14 @@ import java.util.ArrayList;
 
 public class foodInformationActivity extends AppCompatActivity {
     private static RequestQueue queue;
-
+    ImageView foodImage;
     Button btnDecrement,btnIncrement;
     TextView foodnametxt,foodpricetxt;
     CheckBox ex1,ex2,ex3;
     TextView txtQuantity;
     private String name="";
     private double price=0;
+    private int foodImg;
     private double u=price;
     int count = 1;
     private static int pos=0;
@@ -50,19 +52,23 @@ public class foodInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_information);
         extras=new int[3];
         queue = Volley.newRequestQueue(this);
-        //#todo: add setupviews method
+        setUpViews();
+        getfood();
+        getextras();
+        getcafName();
+//        fillextras();
+    }
+
+    public void setUpViews(){
         btnDecrement = findViewById(R.id.btnDecrement);
         btnIncrement = findViewById(R.id.btnIncrement);
         txtQuantity = findViewById(R.id.txtQuantity);
         foodnametxt=findViewById(R.id.foodNameTxt);
         foodpricetxt=findViewById(R.id.price);
+        foodImage=findViewById(R.id.foodImage);
         ex1=findViewById(R.id.extraschkbox1);
         ex2=findViewById(R.id.extraschkbox2);
         ex3=findViewById(R.id.extraschkbox3);
-        getfood();
-        getextras();
-        getcafName();
-//        fillextras();
     }
 
     public void incrementOnClick(View view){
@@ -130,9 +136,12 @@ public class foodInformationActivity extends AppCompatActivity {
                             name = response.getString("FoodName");
                             price = response.getDouble("FoodPrice");
                             foodid = response.getInt("FoodID");
+                            foodImg = response.getInt("FoodImg");
                             u=price;
                             foodnametxt.setText(name);
                             foodpricetxt.setText(String.valueOf(price));
+                            foodImage.setImageResource(foodImg);
+
                 } catch (JSONException e) {
                     Log.e("JSON_Parsing_Error", e.toString());
                 }

@@ -14,25 +14,25 @@
         android:layout_height="300dp"
         android:scaleType="centerCrop"
         android:background="@drawable/ppp2" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title1"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Coffe"
+            android:layout_weight="2"
+            android:text=""
+            android:paddingStart="10dp"
             android:id="@+id/foodNameTxt"
-            android:gravity="center"
-            android:textAlignment="center"
             android:fontFamily="serif"
             android:layout_marginTop="10dp"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             />
@@ -42,12 +42,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="120"
+            android:text=""
             android:gravity="right"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="30dp"
-            android:textSize="25sp"
+            android:layout_marginStart="10dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:fontFamily="serif"
@@ -63,12 +63,13 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:textSize="25sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             />
 
     </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -191,7 +192,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_below="@+id/extraschkbox2"
                 android:layout_marginTop="55dp"
-                android:textSize="25sp"
+                android:textSize="23sp"
                 android:textStyle="bold"
                 android:fontFamily="serif"
                 android:textColor="@color/black"
@@ -218,14 +219,16 @@
         android:layout_marginTop="10dp">
 
 
-        <ImageButton
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/addtocart1"
             android:src="@drawable/shoppingcart"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:background="#00FFFFFF"
+            android:clickable="true"
             android:onClick="AddToCartClk"
             />
 

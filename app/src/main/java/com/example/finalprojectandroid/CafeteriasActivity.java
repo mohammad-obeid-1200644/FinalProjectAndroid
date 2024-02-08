@@ -88,7 +88,7 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
                             Log.d("Food_Object", obj.toString());
                             double price = Double.parseDouble(obj.getString("FoodPrice"));
                             int imgNum = Integer.parseInt((obj.getString("FoodImg")));
-String xxx="";
+                            String xxx="";
                             String cat = obj.getString("FoodCategory");
 
                             if (cat.toLowerCase().trim().equals("sandwiches")) {
@@ -272,6 +272,23 @@ String xxx="";
     }
 
 
+    public void backOnClk1(View view) {
+        Intent intent=new Intent(CafeteriasActivity.this, CafList.class);
+        startActivity(intent);
+    }
+    public void cartOnClk1(View view) {
+        Intent intent=new Intent(CafeteriasActivity.this, CartActivity.class);
+        startActivity(intent);
+    }
+    public void userOnClk1(View view) {
+        Intent intent=new Intent(CafeteriasActivity.this, UserActivity.class);
+        startActivity(intent);
+    }
+
+    public void homeOnClk(View view) {
+        Intent intent=new Intent(CafeteriasActivity.this, CafList.class);
+        startActivity(intent);
+    }
 
 
 

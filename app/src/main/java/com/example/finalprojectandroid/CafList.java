@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -99,4 +100,19 @@ public class CafList extends AppCompatActivity implements RecyclerViewInterface{
 
         startActivity(intent);
     }
+
+
+    public void backOnClk(View view) {
+        Intent intent=new Intent(CafList.this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void cartOnClk(View view) {
+        Intent intent=new Intent(CafList.this, CartActivity.class);
+        startActivity(intent);
+    }
+    public void userOnClk(View view) {
+        Intent intent=new Intent(CafList.this, UserActivity.class);
+        startActivity(intent);
+    }
+
 }
