@@ -108,10 +108,16 @@ public class CafList extends AppCompatActivity implements RecyclerViewInterface{
     }
     public void cartOnClk(View view) {
         Intent intent=new Intent(CafList.this, CartActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
     public void userOnClk(View view) {
         Intent intent=new Intent(CafList.this, UserActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
 

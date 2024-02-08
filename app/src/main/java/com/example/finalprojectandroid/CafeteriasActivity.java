@@ -260,13 +260,11 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
         String x = "";
         x += posit[rec][position];
         Intent intent = new Intent(CafeteriasActivity.this, foodInformationActivity.class);
-//        Log.d("mmkkmmkkmkmkm","blbllb: "+x);
         intent.putExtra("mohammad", x);
         Intent hhint=getIntent();
         String pos=hhint.getStringExtra("pos");
         intent.putExtra("Cafpos", pos);
         String la = hhint.getStringExtra("LoggedinUserID");
-//        Log.d("checkmohammadidid",la);
         intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
@@ -278,10 +276,16 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
     }
     public void cartOnClk1(View view) {
         Intent intent=new Intent(CafeteriasActivity.this, CartActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
     public void userOnClk1(View view) {
         Intent intent=new Intent(CafeteriasActivity.this, UserActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
 

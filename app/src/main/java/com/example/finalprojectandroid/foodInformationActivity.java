@@ -311,4 +311,11 @@ public class foodInformationActivity extends AppCompatActivity {
         inte.putExtra("LoggedinUserID",la);
         startActivity(inte);
     }
+
+    public void backOnClk2(View view){
+        Intent intent=new Intent(foodInformationActivity.this, CafeteriasActivity.class);
+        startActivity(intent);
+    }
+
+
 }

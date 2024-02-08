@@ -26,6 +26,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="serif"
             android:text="Cafeteria name"
+            android:padding="6dp"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />

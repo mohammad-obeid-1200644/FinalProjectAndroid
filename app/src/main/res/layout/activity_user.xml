@@ -1,185 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-    android:layout_marginTop="15dp"
-    android:padding="16dp">
-
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/text_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="My Account"
         android:textSize="30sp"
+        android:padding="10dp"
         android:textStyle="bold"
         android:fontFamily="serif"
-        android:textColor="@color/black"
-        android:layout_gravity="start"
-        android:layout_marginBottom="16dp"/>
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true" />
 
     <ImageView
         android:id="@+id/image_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/usericon1"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/text_title"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
 
-]    <LinearLayout
+    <ScrollView
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
+        android:layout_above="@id/footerLayout"
+        android:layout_below="@id/image_user"
+        android:fillViewport="true">
 
-        android:background="@color/beige1"
-        android:layout_marginBottom="16dp">
-
-        <TextView
-            android:id="@+id/userOrdersTxt"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User Orders"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            android:textColor="@color/black"
-            android:padding="8dp"
-            android:layout_marginBottom="2dp"/>
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:background="@color/beige1"
+                android:layout_marginBottom="16dp">
 
-    </LinearLayout>
-<!--    android:background="@android:color/darker_gray"-->
+                <TextView
+                    android:id="@+id/userOrdersTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="User Orders"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:layout_marginBottom="2dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@color/beige1"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Username"
+                    android:inputType="text"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="8dp"
+                    android:fontFamily="serif"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:fontFamily="serif"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Email"
+                    android:textSize="25dp"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="8dp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="Password"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Password"
+                    android:textSize="25sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold"
+                    android:inputType="textPassword"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:textSize="25sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:background="@drawable/buttonbg"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:background="@color/beige1"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/deleteUserTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Delete Account"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:layout_marginBottom="2dp"/>
+
+                <TextView
+                    android:id="@+id/logoutUserTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:layout_marginBottom="2dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
     <LinearLayout
+        android:id="@+id/footerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp"
-        android:background="@color/beige1"
-        android:layout_marginBottom="16dp">
+        android:padding="13dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Username"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            android:textSize="20sp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_weight="1"
+            android:src="@drawable/back"
+            android:clickable="true"
+            android:onClick="backOnClk3"
+            android:layout_marginEnd="2dp"/>
 
-]        <EditText
-            android:id="@+id/edit_text_username"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Username"
-            android:inputType="text"
-            android:background="@drawable/edit_text_background"
-            android:padding="8dp"
-            android:fontFamily="serif"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:layout_weight="1"
+            android:src="@drawable/home"
+            android:clickable="true"
+            android:onClick="homeOnClk3"
+            android:layout_marginEnd="8dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/cart"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:fontFamily="serif"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_weight="1"
+            android:src="@drawable/shoppingcart"
+            android:clickable="true"
+            android:onClick="cartOnClk3"
+            android:layout_marginEnd="8dp"/>
 
-        <EditText
-            android:id="@+id/edit_text_email"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/user_account"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Email"
-            android:textSize="25dp"
-            android:inputType="textEmailAddress"
-            android:background="@drawable/edit_text_background"
-            android:padding="8dp"
-            android:fontFamily="serif"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="serif"
-            android:text="Password"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/edit_text_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Password"
-            android:textSize="25sp"
-            android:fontFamily="serif"
-            android:textStyle="bold"
-            android:inputType="textPassword"
-            android:background="@drawable/edit_text_background"
-            android:padding="8dp"
-            android:layout_marginBottom="8dp"/>
-
-]        <Button
-            android:id="@+id/button_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:textSize="25sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            android:background="@drawable/buttonbg"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:onClick="userOnClk3"
+            android:background="@color/orange3"
+            android:src="@drawable/userlogo"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:background="@color/beige1"
-        android:layout_marginBottom="16dp">
-
-        <TextView
-            android:id="@+id/deleteUserTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete Account"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            android:textColor="@color/black"
-            android:padding="8dp"
-            android:layout_marginBottom="2dp"/>
-
-        <TextView
-            android:id="@+id/logoutUserTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            android:textColor="@color/black"
-            android:padding="8dp"
-            android:layout_marginBottom="2dp"/>
-
-
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

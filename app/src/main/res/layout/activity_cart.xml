@@ -1,72 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background2"
-    tools:context=".CartActivity"
     android:layout_width="match_parent"
+    android:background="@drawable/background2"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="Cart List"/>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rlid"
-        >
-        <TextView
+        android:layout_below="@id/title"
+        android:layout_above="@id/footer">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:id="@+id/title"
-            android:textStyle="bold"
-            android:layout_marginStart="10dp"
-            android:fontFamily="serif"
-            android:textSize="30dp"
-            android:layout_marginTop="40dp"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:text="Cart List"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/rlid">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/CartItemRec"
+                />
 
-        <androidx.recyclerview.widget.RecyclerView
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
-            android:layout_height="450dp"
-            android:layout_below="@+id/title"
-            android:id="@+id/CartItemRec"
-            />
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:onClick="onBackButtonClick"/>
+
         <TextView
             android:id="@+id/ppriceid"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/CartItemRec"
-            android:text="Total Price: "
-            android:layout_marginTop="30dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="10dp"
-            android:textSize="22dp"
-            android:textColor="@color/black"/>
-
-
+            android:text="Total Price: "
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:textSize="23sp" />
         <TextView
             android:id="@+id/totalpricetxt"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/CartItemRec"
-            android:layout_toRightOf="@+id/ppriceid"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:textSize="22dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="22sp" />
 
         <Button
             android:id="@+id/orderbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ppriceid"
-            android:layout_marginTop="30dp"
-            android:text="Order Now"
-            android:textSize="22dp"
-            android:textColor="@color/black"
+            android:layout_marginEnd="16dp"
             android:onClick="ordernowClick"
-            />
-    </RelativeLayout>
-</ScrollView>
+            android:text="Order Now"
+            android:padding="5dp"
+            android:background="@drawable/footer_border"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textColor="@color/orange3"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
