@@ -147,6 +147,8 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, "Invalid email address.", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(SignupActivity.this, "Passwords do not match.", Toast.LENGTH_LONG).show();
+                    edtPassword.setText("");
+                    edtRepeatPassword.setText("");
                 }
             }
         }else {
