@@ -74,6 +74,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
 
     public void getitems() {
+        totprice=0;
         Intent hhint=getIntent();
         int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
         String url = "http://10.0.2.2:5000/cartitem/"+la;
@@ -100,7 +101,8 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                         double price = obj.getDouble("Total Price");
                         totprice += price;
                         String extras = obj.getString("extras");
-                        items.add(new CartItem(id, cafname, name, price, quan, R.drawable.sandwiches));
+                        int imgID=obj.getInt("imgID");
+                        items.add(new CartItem(id, cafname, name, price, quan, imgID));
                     }
 
                     totalPricetxt.setText(String.valueOf(totprice));
@@ -126,6 +128,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
 
     private void remove_from_cart(int id) {
+        totprice = 0;
         String url = "http://10.0.2.2:5000/deleteitem/" + (id);
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.DELETE,
@@ -133,6 +136,36 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+//                        totprice=0;
+                        Intent hhint=getIntent();
+                        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+                        String url1 = "http://10.0.2.2:5000/cartitem/"+la;
+                        JsonArrayRequest request1 = new JsonArrayRequest(Request.Method.GET, url1,
+                                null, new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                try {
+                                    for (int i = 0; i < response.length(); i++) {
+                                        JSONObject obj = response.getJSONObject(i);
+                                        double price = obj.getDouble("Total Price");
+                                        totprice += price;
+                                    }
+                                    totalPricetxt.setText(String.valueOf(totprice));
+
+                                } catch (JSONException e) {
+                                    Log.e("JSON_Parsing_Error", e.toString());
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                totalPricetxt.setText("0");
+                                Log.e("Network_Error", error.toString());
+                            }
+
+                        });
+                        queue.add(request1);
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -142,33 +175,10 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                     }
                 }
         );
+
         queue.add(request);
-        Intent hhint=getIntent();
-        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
-        String url1 = "http://10.0.2.2:5000/cartitem/"+la;
-        JsonArrayRequest request1 = new JsonArrayRequest(Request.Method.GET, url1,
-                null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                try {
-                    totprice = 0;
-                    for (int i = 0; i < response.length(); i++) {
-                        JSONObject obj = response.getJSONObject(i);
-                        double price = obj.getDouble("Total Price");
-                        totprice += price;
-                    }
-                    totalPricetxt.setText(String.valueOf(totprice));
-                } catch (JSONException e) {
-                    Log.e("JSON_Parsing_Error", e.toString());
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("Network_Error", error.toString());
-            }
-        });
-        queue.add(request1);
+
+
     }
 
     @Override
@@ -178,6 +188,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         remove_from_cart(x);
         adapter.notifyItemRemoved(position);
         adapter.notifyItemRangeChanged(position, adapter.getItemCount());
+//        totalPricetxt.setText(String.valueOf(totprice));
 //        relativeLayout.requestLayout();
 
     }

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,9 @@ public class foodInformationActivity extends AppCompatActivity {
     private static int foodid=0;
     private int [] extras;
     private static final int flagg=0;
+    private ImageView imgview;
     String cafename="";
+    int imgID=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class foodInformationActivity extends AppCompatActivity {
         txtQuantity = findViewById(R.id.txtQuantity);
         foodnametxt=findViewById(R.id.foodNameTxt);
         foodpricetxt=findViewById(R.id.price);
+        imgview =findViewById(R.id.foodImage);
         ex1=findViewById(R.id.extraschkbox1);
         ex2=findViewById(R.id.extraschkbox2);
         ex3=findViewById(R.id.extraschkbox3);
@@ -63,6 +67,7 @@ public class foodInformationActivity extends AppCompatActivity {
         getextras();
         getcafName();
 //        fillextras();
+
     }
 
     public void incrementOnClick(View view){
@@ -130,9 +135,13 @@ public class foodInformationActivity extends AppCompatActivity {
                             name = response.getString("FoodName");
                             price = response.getDouble("FoodPrice");
                             foodid = response.getInt("FoodID");
+                            imgID = response.getInt("FoodImg");
                             u=price;
                             foodnametxt.setText(name);
                             foodpricetxt.setText(String.valueOf(price));
+                            int imgNum = Integer.parseInt((response.getString("FoodImg")));
+                            imgview.setImageResource(imgNum);
+
                 } catch (JSONException e) {
                     Log.e("JSON_Parsing_Error", e.toString());
                 }
@@ -223,7 +232,7 @@ public class foodInformationActivity extends AppCompatActivity {
     }
 
 
-    private void add_to_cart( String Name, int Quant, double TotPrice,String extras,String cafname, int CustID){
+    private void add_to_cart( String Name, int Quant, double TotPrice,String extras,String cafname, int CustID, int imgid){
         String url = "http://10.0.2.2:5000/addcartitem";
 
         RequestQueue queue = Volley.newRequestQueue(foodInformationActivity.this);
@@ -236,6 +245,7 @@ public class foodInformationActivity extends AppCompatActivity {
             jsonParams.put("extras", extras);
             jsonParams.put("customerID", CustID);
             jsonParams.put("CafName", cafname);
+            jsonParams.put("imgID", imgid);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -296,7 +306,7 @@ public class foodInformationActivity extends AppCompatActivity {
             extras="No extras";
         Intent hhint=getIntent();
         String la = hhint.getStringExtra("LoggedinUserID");
-        add_to_cart(name,x,price*x,extras,cafename,Integer.valueOf(la));
+        add_to_cart(name,x,price*x,extras,cafename,Integer.valueOf(la),imgID);
         Intent inte = new Intent(foodInformationActivity.this, CartActivity.class);
         inte.putExtra("LoggedinUserID",la);
         startActivity(inte);
