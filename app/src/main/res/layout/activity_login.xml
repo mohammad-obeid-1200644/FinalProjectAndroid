@@ -121,6 +121,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/googlelogo"
             android:background="#00FFFFFF"
+            android:id="@+id/googlebtn"
             android:layout_gravity="center"
             />
         <ImageButton

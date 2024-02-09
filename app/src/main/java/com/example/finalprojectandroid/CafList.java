@@ -121,4 +121,5 @@ public class CafList extends AppCompatActivity implements RecyclerViewInterface{
         startActivity(intent);
     }
 
+
 }

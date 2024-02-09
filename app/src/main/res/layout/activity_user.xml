@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@drawable/background2">
 
     <TextView
         android:id="@+id/text_title"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:background="@color/beige1"
+                android:background="@color/beige2"
                 android:layout_marginBottom="16dp">
 
                 <TextView
@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="User Orders"
-                    android:textSize="25sp"
+                    android:textSize="23sp"
                     android:textStyle="bold"
                     android:fontFamily="serif"
                     android:textColor="@color/black"
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:background="@color/beige1"
+                android:background="@color/beige2"
                 android:layout_marginBottom="16dp">
 
                 <TextView
@@ -78,19 +78,18 @@
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
                     android:fontFamily="serif"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:layout_marginBottom="8dp"/>
 
                 <EditText
-                    android:id="@+id/edit_text_username"
+                    android:id="@+id/edtUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Username"
                     android:inputType="text"
                     android:background="@drawable/edit_text_background"
                     android:padding="8dp"
                     android:fontFamily="serif"
-                    android:textSize="25dp"
+                    android:textSize="22dp"
                     android:textStyle="bold"
                     android:layout_marginBottom="8dp"/>
 
@@ -101,15 +100,14 @@
                     android:fontFamily="serif"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:layout_marginBottom="8dp"/>
 
                 <EditText
-                    android:id="@+id/edit_text_email"
+                    android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Email"
-                    android:textSize="25dp"
+                    android:textSize="22dp"
                     android:inputType="textEmailAddress"
                     android:background="@drawable/edit_text_background"
                     android:padding="8dp"
@@ -122,17 +120,16 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text="Password"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
                     android:layout_marginBottom="8dp"/>
 
                 <EditText
-                    android:id="@+id/edit_text_password"
+                    android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Password"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
                     android:fontFamily="serif"
                     android:textStyle="bold"
                     android:inputType="textPassword"
@@ -141,7 +138,7 @@
                     android:layout_marginBottom="8dp"/>
 
                 <Button
-                    android:id="@+id/button_save"
+                    android:id="@+id/buttonSave"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Save"
@@ -150,6 +147,7 @@
                     android:layout_marginBottom="5dp"
                     android:textStyle="bold"
                     android:fontFamily="serif"
+                    android:onClick="saveOnClick"
                     android:background="@drawable/buttonbg"
                     android:layout_gravity="center_horizontal"/>
 
@@ -160,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:background="@color/beige1"
+                android:background="@color/beige2"
                 android:layout_marginBottom="16dp">
 
                 <TextView
@@ -173,6 +171,8 @@
                     android:fontFamily="serif"
                     android:textColor="@color/black"
                     android:padding="8dp"
+                    android:clickable="true"
+                    android:onClick="deleteOnClk"
                     android:layout_marginBottom="2dp"/>
 
                 <TextView
@@ -185,6 +185,8 @@
                     android:fontFamily="serif"
                     android:textColor="@color/black"
                     android:padding="8dp"
+                    android:clickable="true"
+                    android:onClick="logOutOnClk"
                     android:layout_marginBottom="2dp"/>
 
             </LinearLayout>
