@@ -312,10 +312,29 @@ public class foodInformationActivity extends AppCompatActivity {
         startActivity(inte);
     }
 
-    public void backOnClk2(View view){
+    public void backOnClk5(View view){
         Intent intent=new Intent(foodInformationActivity.this, CafeteriasActivity.class);
         startActivity(intent);
     }
+
+    public void homeClick(View view){
+        Intent intent=new Intent(foodInformationActivity.this, CafList.class);
+        startActivity(intent);
+    }
+
+    public void userClk(View view){
+        Intent intent=new Intent(foodInformationActivity.this, UserActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+
+
+
+
+
 
 
 }
