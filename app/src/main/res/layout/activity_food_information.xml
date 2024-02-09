@@ -70,6 +70,54 @@
 
     </LinearLayout>
 
+    <!-- Buttons for Incrementing and Decrementing Quantity -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnDecrement"
+            android:textStyle="bold"
+            android:onClick="decrementOnClick"
+            android:textSize="45dp"
+            android:paddingBottom="10dp"
+            android:layout_marginStart="240dp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:text="-"
+            android:background="#00FFFFFF"
+            />
+
+        <TextView
+            android:id="@+id/txtQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:gravity="center"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="serif"
+            />
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/btnIncrement"
+            android:onClick="incrementOnClick"
+            android:textStyle="bold"
+            android:textSize="27dp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:text="+"
+            android:background="#00FFFFFF"
+            android:layout_marginLeft="8dp"
+            />
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -79,62 +127,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- Other views -->
 
-
-<!--            <TextView-->
-<!--                android:id="@+id/sizes"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Available Sizes: "-->
-<!--                android:fontFamily="serif"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:textSize="27sp"-->
-<!--                android:textStyle="bold"-->
-<!--                android:textColor="@color/black"-->
-<!--                />-->
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:id="@+id/rlextras"-->
-<!--                android:layout_below="@+id/sizes"-->
-<!--                android:layout_marginTop="10dp">-->
-
-<!--                <RadioGroup-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:gravity="center"-->
-<!--                    android:layout_marginLeft="25dp">-->
-
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radiosmall"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textSize="18dp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:fontFamily="serif"-->
-<!--                        android:text="Small"/>-->
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radiomedium"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textSize="18dp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:fontFamily="serif"-->
-<!--                        android:text="Medium"/>-->
-<!--                    <RadioButton-->
-<!--                        android:id="@+id/radiolarge"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textSize="18dp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:fontFamily="serif"-->
-<!--                        android:text="Large"/>-->
-<!--                </RadioGroup>-->
-<!--            </RelativeLayout>-->
-
+            <!-- Additional Views -->
             <TextView
                 android:id="@+id/additionstxt"
                 android:layout_width="match_parent"
@@ -214,35 +209,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/backButtonId"
-            android:src="@drawable/back"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:background="#00FFFFFF"
-            android:clickable="true"
-            android:onClick="backOnClk2"
-            />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/addtocart1"
-            android:src="@drawable/shoppingcart"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:background="#00FFFFFF"
-            android:clickable="true"
-            android:onClick="AddToCartClk"
-            />
 
         <Button
             android:layout_width="0dp"
@@ -251,61 +221,64 @@
             android:layout_weight="1"
             android:id="@+id/buynow"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="20dp"
             android:textColor="@android:color/holo_orange_dark"
             android:text="Buy Now"
             android:background="#00FFFFFF"
             android:onClick="BuyNowClk"
             />
 
-        <LinearLayout
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="13dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/backButtonId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_weight="1"
+            android:src="@drawable/back"
+            android:clickable="true"
+            android:onClick="backOnClk5"
+            android:layout_marginEnd="2dp"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnDecrement"
-                android:textStyle="bold"
-                android:onClick="decrementOnClick"
-                android:textSize="40dp"
-                android:textColor="@android:color/holo_orange_dark"
-                android:text="-"
-                android:background="#00FFFFFF"
-                />
+        <ImageView
+            android:id="@+id/home1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/home"
+            android:clickable="true"
+            android:onClick="homeClick"
+            android:layout_marginEnd="8dp"/>
 
-            <TextView
-                android:id="@+id/txtQuantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:gravity="center"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:fontFamily="serif"
-                />
+        <ImageView
+            android:id="@+id/addtocart1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="AddToCartClk"
+            android:src="@drawable/shoppingcart"
+            android:layout_marginEnd="8dp"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnIncrement"
-                android:onClick="incrementOnClick"
-                android:textStyle="bold"
-                android:textSize="35dp"
-                android:textColor="@android:color/holo_orange_dark"
-                android:text="+"
-                android:background="#00FFFFFF"
-                android:layout_marginLeft="8dp"
-                />
 
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/userAccountId"
+            android:layout_width="0dp"
+            android:clickable="true"
+            android:onClick="userClk"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/userlogo"/>
 
     </LinearLayout>
 
-
 </LinearLayout>
-
