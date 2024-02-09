@@ -2,6 +2,7 @@ package com.example.finalprojectandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -9,12 +10,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -38,6 +41,7 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
     private int[][] posit = new int[5][];
     int counter1 = 0, counter2 = 0, counter3 = 0, counter4 = 0, counter5 = 0;
     private static String result = "";
+    private TextView cafnametxt;
 
 
     @Override
@@ -45,6 +49,7 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menudesign);
         queue = Volley.newRequestQueue(this);
+        setcafName();
         getfood();
 //        Toast.makeText(this,"position: "+pos,Toast.LENGTH_LONG).show();
         setupviews();
@@ -57,7 +62,34 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
 
 
     }
+    public void setcafName(){
+        Intent intent = getIntent();
+        int pos = Integer.valueOf(intent.getStringExtra("pos"));
+        String url = "http://10.0.2.2:5000/cafeteria/"+pos;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                        String Name = response.getString("CafName");
+                        Log.d("mohammadkadoumi","name: "+Name);
+                        cafnametxt.setText(Name);
+                } catch (JSONException e) {
+                    Log.d("Volley_error", e.toString());
+                }
+            }}, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Volley_error", error.toString());
+                System.out.println("eeee:::::::::::::::::eeeeee");
+            }
+        });
 
+        queue.add(request);
+
+
+
+    }
 
     public void getfood() {
         Sandwiches = new ArrayList<>();
@@ -225,6 +257,7 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
         coldDrinksLayout = findViewById(R.id.rl3);
         Saladslayout = findViewById(R.id.rl4);
         sweetsLayout = findViewById(R.id.rl5);
+        cafnametxt=findViewById(R.id.cafNameTxt);
     }
 
     public void showVisibilityLayouts() {

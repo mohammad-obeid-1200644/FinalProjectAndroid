@@ -46,6 +46,7 @@ public class foodInformationActivity extends AppCompatActivity {
     private ImageView imgview;
     String cafename="";
     int imgID=0;
+    private TextView extr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,8 @@ public class foodInformationActivity extends AppCompatActivity {
         ex1=findViewById(R.id.extraschkbox1);
         ex2=findViewById(R.id.extraschkbox2);
         ex3=findViewById(R.id.extraschkbox3);
+        extr=findViewById(R.id.additionstxt);
+
         getfood();
         getextras();
         getcafName();
@@ -184,6 +187,7 @@ public class foodInformationActivity extends AppCompatActivity {
                                     try {
                                         String obj = response.getString("ExtraName");
                                         if (finalFlagg == 0) {
+                                            extr.setVisibility(View.VISIBLE);
                                             ex1.setVisibility(View.VISIBLE);
                                             ex1.setText(obj);
                                         }
@@ -284,6 +288,7 @@ public class foodInformationActivity extends AppCompatActivity {
         int x=Integer.valueOf(txtQuantity.getText().toString());
         String extras="";
         if(!ex1.getText().equals("")){
+
             if(ex1.isChecked())
                 extras+=ex1.getText().toString();
         }

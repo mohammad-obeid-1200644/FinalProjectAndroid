@@ -1,0 +1,124 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderINFOActivity">
+
+    <TextView
+        android:id="@+id/infoTital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Order Information:"
+        android:textColor="@color/black"
+        android:textSize="27dp"
+        android:textStyle="bold"
+        android:fontFamily="serif"/>
+
+    <TextView
+        android:id="@+id/ordernumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/infoTital"
+        android:layout_marginTop="20dp"
+        android:fontFamily="serif"
+        android:paddingTop="20dp"
+        android:text="Order Number:"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <ScrollView
+        android:id="@+id/s"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ordernumber"
+        android:layout_marginTop="20dp"
+        android:paddingTop="20dp"
+        tools:context=".CafList">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/LastREC"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <!-- Linear Layout for Total price -->
+    <LinearLayout
+        android:id="@+id/totalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/s"
+        android:padding="15dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total price"
+            android:textSize="18sp"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="13dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/back"
+            android:clickable="true"
+            android:onClick="backOnClk3"
+            android:layout_marginEnd="2dp"/>
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/home"
+            android:clickable="true"
+            android:onClick="homeOnClk3"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/cart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/shoppingcart"
+            android:clickable="true"
+            android:onClick="cartOnClk3"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/user_account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:onClick="userOnClk3"
+            android:background="@color/orange3"
+            android:src="@drawable/userlogo"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

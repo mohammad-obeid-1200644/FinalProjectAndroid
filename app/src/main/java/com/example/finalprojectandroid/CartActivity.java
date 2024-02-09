@@ -30,6 +30,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
+
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 
 public class CartActivity extends AppCompatActivity implements CardItemRecyclerAdapter.OnItemDeleteListener {
     private static RequestQueue queue;
@@ -47,6 +58,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
     private RelativeLayout relativeLayout;
     Button orderbtn;
     private static double totprice = 0;
+    private static String mailsubject="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,10 +208,13 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
     public void ordernowClick(View view) {
         Intent hhint=getIntent();
-        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"))+1;
+        Intent lastint=new Intent(CartActivity.this,OrderActivity.class);
+        int p=la;
+        lastint.putExtra("LoggedinUserID",p+"");
+        Log.d("jajajjajlslsla",la+"");
         add_order(totprice, la);
-        getlastinsertedorderID();
-
+//
         Iterator<CartItem> iterator = items.iterator();
         while (iterator.hasNext()) {
             CartItem item = iterator.next();
@@ -211,24 +226,12 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         totprice = 0;
         totalPricetxt.setText(String.valueOf(totprice));
         orderbtn.setVisibility(View.GONE);
+//        Log.d("skjbdkjdsjkn",mailsubject);
+
+        startActivity(lastint);
 
 
     }
-
-
-//    public void incrementOnClickcc(View view){
-//        count+=1;
-//        CartItemQuantity.setText(""+count);
-//    }
-//
-//    public void decrementOnClickcc(View view){
-//        if(count<=1)
-//            count=1;
-//        else
-//            count-=1;
-//        CartItemQuantity.setText(""+count);
-//    }
-
 
     private void add_order(double TotPrice, int userID) {
         String url = "http://10.0.2.2:5000/createorder";
@@ -248,6 +251,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        getlastinsertedorderID();
                     }
                 },
                 new Response.ErrorListener() {
@@ -269,7 +273,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
             public void onResponse(JSONObject response) {
                 try {
                     int id = response.getInt("MAX(OrderID)");
-                    Log.d("MohammadKadoumiTest", id + "");
+
                     Intent hhint=getIntent();
                     int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
                     String url1 = "http://10.0.2.2:5000/cartitem/"+la;
@@ -282,14 +286,18 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                                     JSONObject obj = response1.getJSONObject(i);
                                     String price=obj.getString("Total Price");
                                     String cfname=obj.getString("CafName");
+                                    String FoodName=obj.getString("Name");
+                                    String Quan=obj.getString("Quantity");
+                                    int imgi=obj.getInt("imgID");
                                     Log.d("jdjcnlssd","id::::"+id+"    //"+price+","+cfname+" ==cfname");
-
-
-                                    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    mailsubject+="Food Name: "+FoodName+", Quantity: "+Quan+", Total Price: "+
+                                            price+", From Caf: "+cfname+"\n";
+                                    addtovirtcart( FoodName, Integer.valueOf(Quan), Double.valueOf(price),cfname, la, imgi, id);
+                                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                     String url = "http://10.0.2.2:5000/addorderitems";
                                     JSONObject jsonParams1 = new JSONObject();
                                     try {
-                                        jsonParams1.put("OrderID", (id+1));
+                                        jsonParams1.put("OrderID", (id));
                                         jsonParams1.put("Price", price);
                                         jsonParams1.put("CafName", cfname);
                                     } catch (JSONException e) {
@@ -316,8 +324,10 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                                             }
                                     );
                                     queue.add(request1);
-                                    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                 }
+                                sendemail(mailsubject);
+                                Log.d("skjbdkjdsjkn",mailsubject);
                             } catch (JSONException e) {
                                 Log.e("JSON_Parsing_Error", e.toString());
                             }
@@ -341,7 +351,44 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         });
         queue.add(request);
     }
+    private void addtovirtcart( String Name, int Quant, double TotPrice, String cafname, int CustID, int imgid, int orderid){
+        String url = "http://10.0.2.2:5000/addcartitemm";
 
+        RequestQueue queue = Volley.newRequestQueue(CartActivity.this);
+
+        JSONObject jsonParams = new JSONObject();
+        try {
+            jsonParams.put("Name", Name);
+            jsonParams.put("Quantity", Quant);
+            jsonParams.put("TotalPrice", TotPrice);
+            jsonParams.put("customerID", CustID);
+            jsonParams.put("CafName", cafname);
+            jsonParams.put("imgID", imgid);
+            jsonParams.put("OrderID", orderid);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+//        Log.d("additeminfo","Name: "+ Name+"\nQuant: "+Quant+"\nTotPrice: "+TotPrice+"\nextrs: "+extras+"\ncustID: "+CustID+"\nCafName: "+cafename);
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonParams,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VolleyError", error.toString());
+                    }
+                }
+        );
+        queue.add(request);
+    }
 
 
     private void remove_cartItems(int id) {
@@ -363,4 +410,51 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         );
         queue.add(request);
     }
+
+
+
+    private void sendemail(String subj) {
+        final String username = "mohammadkadoumi77@gmail.com"; // Your email
+        final String password = "olmi vvcc kjwz rqen"; // Your email password
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("mohammadkadoumi77@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse("raghad.saleem.aqel@gmail.com"));//
+            message.setSubject("New Order");
+            message.setText(subj);
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Transport.send(message);
+                        Log.d("ememememeee","Email Sent");
+                    } catch (Exception e) {
+                        Log.d("ememememeee","Can Not Send mail");
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
