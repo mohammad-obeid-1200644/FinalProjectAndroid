@@ -2,6 +2,7 @@ package com.example.finalprojectandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,10 +32,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class SignupActivity extends AppCompatActivity {
     private EditText edtName, edtEmail, edtPassword, edtRepeatPassword;
+    private EditText edtBirthday;
     private RequestQueue queue;
     ArrayList<User> users;
 
@@ -51,6 +55,7 @@ public class SignupActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         edtRepeatPassword = findViewById(R.id.edtRepeatPassword);
+        edtBirthday = findViewById(R.id.edtBirthday);
     }
 
     public void signUpOnClk(View view) {
@@ -59,9 +64,10 @@ public class SignupActivity extends AppCompatActivity {
         String userEmail = edtEmail.getText().toString();
         String userPassword = edtPassword.getText().toString();
         String repeatedPassword = edtRepeatPassword.getText().toString();
+        String birthDayDate = edtBirthday.getText().toString();
 
 
-        if (!isEmpty(userName) && !isEmpty(userEmail) && !isEmpty(userPassword) && !isEmpty(repeatedPassword)) {
+        if (!isEmpty(userName) && !isEmpty(userEmail) && !isEmpty(userPassword) && !isEmpty(repeatedPassword) && !isEmpty(birthDayDate)) {
             if (isValidEmail(userEmail) && userPassword.equals(repeatedPassword)) {
                 if (isValidPassword(userPassword)) {
                     //read the user table from database to make sure that there is no two same users
@@ -212,24 +218,21 @@ public class SignupActivity extends AppCompatActivity {
         queue.add(request);
     }
 
-//    private boolean isValidPassword(String password) {
-//        if (password.length() < 8) {
-//            return false;
-//        }
-//        boolean containsAlphabetic = false;
-//        for (char c : password.toCharArray()) {
-//            if (Character.isLetter(c)) {
-//                containsAlphabetic = true;
-//                break;
-//            }
-//        }
-//        boolean containsDigit = false;
-//        for (char c : password.toCharArray()) {
-//            if (Character.isDigit(c)) {
-//                containsDigit = true;
-//                break;
-//            }
-//        }
-//        return containsAlphabetic && containsDigit;
-//    }
+    public void showDatePickerDialog(View v) {
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        edtBirthday.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                    }
+                }, year, month, day);
+        datePickerDialog.show();
+    }
 }
+
+

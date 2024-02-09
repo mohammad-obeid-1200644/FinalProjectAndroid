@@ -19,7 +19,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textAlignment="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
 
         />
 
@@ -35,7 +35,7 @@
         android:fontFamily="serif"
         android:textSize="22dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         />
 
     <EditText
@@ -63,7 +63,7 @@
         android:id="@+id/edtPassword"
         android:textStyle="bold"
         android:fontFamily="serif"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/black"
         android:inputType="textPassword"
         />
@@ -80,10 +80,25 @@
         android:hint="Repeat your password"
         android:id="@+id/edtRepeatPassword"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
         android:textColor="@color/black"
         android:inputType="textPassword"
         />
+
+    <EditText
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:layout_marginStart="8dp"
+        android:hint="Select Your Birthday"
+        android:id="@+id/edtBirthday"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:focusable="false"
+        android:onClick="showDatePickerDialog"
+    />
 
     <Button
         android:layout_width="120dp"
