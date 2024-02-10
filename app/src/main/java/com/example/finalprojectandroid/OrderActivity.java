@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -80,5 +81,28 @@ public class OrderActivity extends AppCompatActivity implements RecyclerViewInte
         });
 
         queue.add(request);
+    }
+
+    public void cartOnClk1(View view) {
+        Intent intent=new Intent(OrderActivity.this, CartActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+    public void userOnClk1(View view) {
+        Intent intent=new Intent(OrderActivity.this, UserActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void homeOnClk(View view) {
+        Intent intent=new Intent(OrderActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
     }
 }

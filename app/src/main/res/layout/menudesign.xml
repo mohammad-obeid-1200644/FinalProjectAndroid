@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:src="@drawable/back"
             android:clickable="true"
-            android:onClick="backOnClk1"
+            android:onClick="backOnClkk"
             android:layout_marginEnd="2dp"/>
 
         <ImageView
@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:src="@drawable/home"
             android:clickable="true"
-            android:onClick="homeOnClk"
+            android:onClick="homeOnClkk"
             android:layout_marginEnd="8dp"/>
 
         <ImageView
@@ -69,7 +69,7 @@
             android:layout_weight="1"
             android:src="@drawable/shoppingcart"
             android:clickable="true"
-            android:onClick="cartOnClk1"
+            android:onClick="cartOnClkk"
             android:layout_marginEnd="8dp"/>
 
         <ImageView
@@ -79,7 +79,7 @@
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
             android:clickable="true"
-            android:onClick="userOnClk1"
+            android:onClick="userOnClkk"
             android:src="@drawable/userlogo"/>
 
     </LinearLayout>

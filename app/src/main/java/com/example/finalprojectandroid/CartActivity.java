@@ -457,4 +457,36 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
         }
     }
 
+    public void cartOnClk1(View view) {
+//        Intent intent=new Intent(CartActivity.this, CartActivity.class);
+//        Intent ine = getIntent();
+//        String la = ine.getStringExtra("LoggedinUserID");
+//        intent.putExtra("LoggedinUserID",la);
+//        startActivity(intent);
+    }
+
+    public void homeClick1(View view) {
+        Intent intent=new Intent(CartActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void userClks(View view) {
+        Intent intent=new Intent(CartActivity.this, UserActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void onBackButtonClick(View view) {
+        Intent intent=new Intent(CartActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
 }

@@ -301,32 +301,36 @@ public class CafeteriasActivity extends AppCompatActivity implements RecyclerVie
         intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
-
-
-    public void backOnClk1(View view) {
+    public void backOnClkk(View view) {
         Intent intent=new Intent(CafeteriasActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
-    public void cartOnClk1(View view) {
+
+    public void homeOnClkk(View view) {
+        Intent intent=new Intent(CafeteriasActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+
+    }
+
+    public void cartOnClkk(View view) {
         Intent intent=new Intent(CafeteriasActivity.this, CartActivity.class);
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");
         intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
-    public void userOnClk1(View view) {
+
+    public void userOnClkk(View view) {
         Intent intent=new Intent(CafeteriasActivity.this, UserActivity.class);
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");
         intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
-
-    public void homeOnClk(View view) {
-        Intent intent=new Intent(CafeteriasActivity.this, CafList.class);
-        startActivity(intent);
-    }
-
-
-
 }

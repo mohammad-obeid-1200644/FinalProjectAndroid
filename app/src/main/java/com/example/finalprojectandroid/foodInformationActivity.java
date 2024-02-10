@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class foodInformationActivity extends AppCompatActivity {
     private static RequestQueue queue;
@@ -46,6 +47,7 @@ public class foodInformationActivity extends AppCompatActivity {
     private ImageView imgview;
     String cafename="";
     int imgID=0;
+    int imgNum=0;
     private TextView extr;
 
     @Override
@@ -142,7 +144,7 @@ public class foodInformationActivity extends AppCompatActivity {
                             u=price;
                             foodnametxt.setText(name);
                             foodpricetxt.setText(String.valueOf(price));
-                            int imgNum = Integer.parseInt((response.getString("FoodImg")));
+                            imgNum = Integer.parseInt((response.getString("FoodImg")));
                             imgview.setImageResource(imgNum);
 
                 } catch (JSONException e) {
@@ -316,19 +318,16 @@ public class foodInformationActivity extends AppCompatActivity {
         inte.putExtra("LoggedinUserID",la);
         startActivity(inte);
     }
-
-    public void backOnClk5(View view){
-        Intent intent=new Intent(foodInformationActivity.this, CafeteriasActivity.class);
-        startActivity(intent);
-    }
-
-    public void homeClick(View view){
+    public void backOnClks(View view) {
         Intent intent=new Intent(foodInformationActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
 
-    public void userClk(View view){
-        Intent intent=new Intent(foodInformationActivity.this, UserActivity.class);
+    public void homeClicks(View view) {
+        Intent intent=new Intent(foodInformationActivity.this, CafList.class);
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");
         intent.putExtra("LoggedinUserID",la);
@@ -337,9 +336,176 @@ public class foodInformationActivity extends AppCompatActivity {
 
 
 
+    public void userClkks(View view) {
+        Intent intent=new Intent(foodInformationActivity.this, UserActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+    public void BuyNowClk(View view) {
+        Intent hhint=getIntent();
+        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"))+1;
+        Intent lastint=new Intent(foodInformationActivity.this,OrderActivity.class);
+        int p=la;
+        lastint.putExtra("LoggedinUserID",p+"");
+        Log.d("jajajjajlslsla",la+"");
+        add_order(price, la);
+        startActivity(lastint);
+    }
+
+    private void add_order(double TotPrice, int userID) {
+        String url = "http://10.0.2.2:5000/createorder";
+        JSONObject jsonParams = new JSONObject();
+        try {
+            Intent hhint=getIntent();
+            int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+            jsonParams.put("TotalPrice", TotPrice);
+            jsonParams.put("UserID", la);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonParams,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        getlastinsertedorderID();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VolleyError", error.toString());
+                    }
+
+                }
+        );
+        queue.add(request);
+    }
+
+    private void getlastinsertedorderID() {
+        String url1 = "http://10.0.2.2:5000/lastorderid";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url1,
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    int id = response.getInt("MAX(OrderID)");
+                    Intent hhint=getIntent();
+                    int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+                    add_order_item(id,price, cafename);
+                    addtovirtcart( name, 1, price, cafename, la, imgNum , id);
+                } catch (JSONException e) {
+                    Log.e("JSON_Parsing_Error", e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Network_Error", error.toString());
+            }
+        });
+        queue.add(request);
+    }
+
+    public void add_order_item(int id,double pric,String cfname){
+        String url = "http://10.0.2.2:5000/addorderitems";
+        JSONObject jsonParams1 = new JSONObject();
+        try {
+            jsonParams1.put("OrderID", (id));
+            jsonParams1.put("Price", pric);
+            jsonParams1.put("CafName", cfname);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest request1 = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonParams1,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Intent hhint=getIntent();
+                        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VolleyError", error.toString());
+                    }
+
+                }
+        );
+        queue.add(request1);
+
+    }
 
 
 
+    private void addtovirtcart( String Name, int Quant, double TotPrice, String cafname, int CustID, int imgid, int orderid){
+        String url = "http://10.0.2.2:5000/addcartitemm";
+
+        RequestQueue queue = Volley.newRequestQueue(foodInformationActivity.this);
+
+        JSONObject jsonParams = new JSONObject();
+        try {
+            jsonParams.put("Name", Name);
+            jsonParams.put("Quantity", Quant);
+            jsonParams.put("TotalPrice", TotPrice);
+            jsonParams.put("customerID", CustID);
+            jsonParams.put("CafName", cafname);
+            jsonParams.put("imgID", imgid);
+            jsonParams.put("OrderID", orderid);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+//        Log.d("additeminfo","Name: "+ Name+"\nQuant: "+Quant+"\nTotPrice: "+TotPrice+"\nextrs: "+extras+"\ncustID: "+CustID+"\nCafName: "+cafename);
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonParams,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VolleyError", error.toString());
+                    }
+                }
+        );
+        queue.add(request);
+    }
+
+
+    public void cartOnClk1(View view) {
+
+    }
+
+
+    public void homeOnClk(View view) {
+        Intent intent=new Intent(foodInformationActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void userClkk(View view) {
+        Intent intent=new Intent(foodInformationActivity.this, UserActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
 
 
 }

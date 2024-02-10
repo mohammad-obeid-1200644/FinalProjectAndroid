@@ -144,5 +144,31 @@ public class UserActivity extends AppCompatActivity {
     }
 
 
+    public void backOnClk3(View view) {
+        Intent intent=new Intent(UserActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
 
+    public void homeOnClk3(View view) {
+        Intent intent=new Intent(UserActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void cartOnClk3(View view) {
+        Intent intent=new Intent(UserActivity.this, CartActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void userOnClk3(View view) {
+
+    }
 }
