@@ -70,7 +70,7 @@
             android:fontFamily="serif"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="30dp"
             android:textStyle="bold" />
 
         <Button
@@ -125,6 +125,7 @@
             android:clickable="true"
             android:onClick="AddToCartClkk"
             android:src="@drawable/shoppingcart"
+            android:background="@color/orange3"
             android:layout_marginEnd="8dp"/>
 
 

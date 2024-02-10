@@ -169,6 +169,21 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public void userOnClk3(View view) {
+        Intent intent=new Intent(UserActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void myOrderOnClk(View view) {
+        Intent intent=new Intent(UserActivity.this, OrderActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
 
     }
+
+
 }
