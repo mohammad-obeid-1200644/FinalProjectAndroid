@@ -49,6 +49,7 @@ public class foodInformationActivity extends AppCompatActivity {
     int imgID=0;
     int imgNum=0;
     private TextView extr;
+    int Quant=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -396,8 +397,10 @@ public class foodInformationActivity extends AppCompatActivity {
                     int id = response.getInt("MAX(OrderID)");
                     Intent hhint=getIntent();
                     int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
-                    add_order_item(id,price, cafename);
-                    addtovirtcart( name, 1, price, cafename, la, imgNum , id);
+
+                    add_order_item(id,price*count, cafename);
+
+                    addtovirtcart( name, count, price*count, cafename, la, imgNum , id);
                 } catch (JSONException e) {
                     Log.e("JSON_Parsing_Error", e.toString());
                 }
