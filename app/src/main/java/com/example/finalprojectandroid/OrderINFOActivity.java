@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,6 +29,10 @@ public class OrderINFOActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LastAdapter adapter;
     private RequestQueue queue;
+    TextView ordernumber, totalText;
+    double total1;
+    String price="";
+    String Quant="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +40,8 @@ public class OrderINFOActivity extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
         getOrderInfoByID();
         adapter = new LastAdapter(getApplicationContext(),items);
+        ordernumber = findViewById(R.id.ordernumber);
+        totalText = findViewById(R.id.totalText);
     }
 
     public void getOrderInfoByID(){
@@ -47,19 +55,25 @@ public class OrderINFOActivity extends AppCompatActivity {
                 null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                double total1 = 0;
                 try {
                     for(int i=0; i < response.length(); i++){
                         JSONObject obj = response.getJSONObject(i);
                         String cafName = obj.getString("CafName");
                         String foodName = obj.getString("Name");
-                        String Quant = obj.getString("Quantity");
-                        String price = obj.getString("Total Price");
+                        Quant = obj.getString("Quantity");
+                        price = obj.getString("Total Price");
                         String img = obj.getString("imgID");
+                        double p = Double.valueOf(price);
+                        total1 += p;
                         items.add(new OrderInformation(foodName,Integer.valueOf(Quant),Double.valueOf(price),cafName,Integer.valueOf(img)));
                     }
                     recyclerView = findViewById(R.id.LastREC);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(OrderINFOActivity.this));
+                    ordernumber.setText("Order Number: "+la);
+                    totalText.setText("Total price: "+total1);
+
 
 
                 } catch (JSONException e) {
@@ -75,4 +89,36 @@ public class OrderINFOActivity extends AppCompatActivity {
 
         queue.add(request);
     }
+
+    public void cartClk(View view) {
+        Intent intent=new Intent(OrderINFOActivity.this, CartActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+    public void userClk(View view) {
+        Intent intent=new Intent(OrderINFOActivity.this, UserActivity.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void homeClk(View view) {
+        Intent intent=new Intent(OrderINFOActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void backClk(View view) {
+        Intent intent=new Intent(OrderINFOActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
 }
+

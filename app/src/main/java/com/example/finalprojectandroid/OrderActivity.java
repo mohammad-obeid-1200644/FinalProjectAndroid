@@ -83,14 +83,14 @@ public class OrderActivity extends AppCompatActivity implements RecyclerViewInte
         queue.add(request);
     }
 
-    public void cartOnClk1(View view) {
+    public void carttOnClk(View view) {
         Intent intent=new Intent(OrderActivity.this, CartActivity.class);
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");
         intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
-    public void userOnClk1(View view) {
+    public void userrOnClk(View view) {
         Intent intent=new Intent(OrderActivity.this, UserActivity.class);
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");
@@ -98,7 +98,15 @@ public class OrderActivity extends AppCompatActivity implements RecyclerViewInte
         startActivity(intent);
     }
 
-    public void homeOnClk(View view) {
+    public void homeeOnClk(View view) {
+        Intent intent=new Intent(OrderActivity.this, CafList.class);
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
+        startActivity(intent);
+    }
+
+    public void backkOnClk(View view) {
         Intent intent=new Intent(OrderActivity.this, CafList.class);
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");

@@ -5,27 +5,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     tools:context=".OrderActivity">
-    >
+
     <TextView
         android:id="@+id/Totalprice_val"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="alkdnsk"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginStart="8dp" />
-
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/REC"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/Totalprice_val"
-        />
+        android:text="Orders"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="27dp"
+        android:fontFamily="serif" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Totalprice_val"
+        android:layout_above="@id/footer"
+        android:layout_marginTop="20dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/REC"
+            tools:ignore="MissingConstraints" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="13dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/backk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/back"
+            android:clickable="true"
+            android:onClick="backkOnClk"
+            android:layout_marginEnd="2dp"/>
+
+        <ImageView
+            android:id="@+id/homee"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/home"
+            android:clickable="true"
+            android:onClick="homeeOnClk"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/cartt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="carttOnClk"
+            android:src="@drawable/shoppingcart"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/user_accountt"
+            android:layout_width="0dp"
+            android:clickable="true"
+            android:onClick="userrOnClk"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/userlogo"/>
+
+    </LinearLayout>
+
 </RelativeLayout>

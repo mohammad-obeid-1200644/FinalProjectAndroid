@@ -30,17 +30,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order ID: "
+                android:fontFamily="serif"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/orderNumber_val"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                android:fontFamily="serif"
                 android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="22sp"
                 android:layout_marginStart="8dp" />
 
         </LinearLayout>
@@ -55,9 +58,11 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Price"
+                android:text="Total Price: "
+                android:fontFamily="serif"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/Totalprice_val"
@@ -65,9 +70,22 @@
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="22sp"
+                android:fontFamily="serif"
                 android:textStyle="bold"
                 android:layout_marginStart="8dp" />
+
+            <TextView
+                android:id="@+id/Currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIS"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                 />
 
         </LinearLayout>
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     tools:context=".OrderINFOActivity">
 
     <TextView
@@ -17,23 +18,49 @@
         android:textStyle="bold"
         android:fontFamily="serif"/>
 
+    <LinearLayout
+        android:id="@+id/totalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ordernumber"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/totalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total price: "
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:fontFamily="serif"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/ordernumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/infoTital"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="serif"
         android:paddingTop="20dp"
+        android:textStyle="bold"
+        android:padding="15dp"
         android:text="Order Number:"
         android:textColor="@color/black"
-        android:textSize="18dp" />
+        android:textSize="23dp" />
+
+
+
 
     <ScrollView
         android:id="@+id/s"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ordernumber"
+        android:layout_below="@id/totalLayout"
+        android:layout_above="@id/footerLayout"
         android:layout_marginTop="20dp"
         android:paddingTop="20dp"
         tools:context=".CafList">
@@ -51,24 +78,7 @@
         </RelativeLayout>
     </ScrollView>
 
-    <!-- Linear Layout for Total price -->
-    <LinearLayout
-        android:id="@+id/totalLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/s"
-        android:padding="15dp"
-        android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/totalText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total price"
-            android:textSize="18sp"
-            android:textColor="@color/black" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/footerLayout"
@@ -85,7 +95,7 @@
             android:layout_weight="1"
             android:src="@drawable/back"
             android:clickable="true"
-            android:onClick="backOnClk3"
+            android:onClick="backClk"
             android:layout_marginEnd="2dp"/>
 
         <ImageView
@@ -95,7 +105,7 @@
             android:layout_weight="1"
             android:src="@drawable/home"
             android:clickable="true"
-            android:onClick="homeOnClk3"
+            android:onClick="homeClk"
             android:layout_marginEnd="8dp"/>
 
         <ImageView
@@ -105,7 +115,7 @@
             android:layout_weight="1"
             android:src="@drawable/shoppingcart"
             android:clickable="true"
-            android:onClick="cartOnClk3"
+            android:onClick="cartClk"
             android:layout_marginEnd="8dp"/>
 
         <ImageView
@@ -115,8 +125,7 @@
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
             android:clickable="true"
-            android:onClick="userOnClk3"
-            android:background="@color/orange3"
+            android:onClick="userClk"
             android:src="@drawable/userlogo"/>
 
     </LinearLayout>
