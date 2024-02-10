@@ -45,11 +45,15 @@ public class OrderActivity extends AppCompatActivity implements RecyclerViewInte
 //        Log.d("ididiididlala",ids[position]+" , lala");
         Intent intent=new Intent(OrderActivity.this, OrderINFOActivity.class);
         intent.putExtra("orderID",ids[position]+"");
+        Intent ine = getIntent();
+        String la = ine.getStringExtra("LoggedinUserID");
+        intent.putExtra("LoggedinUserID",la);
         startActivity(intent);
     }
     public void getorders(){
         Intent hhint=getIntent();
-        int la = Integer.valueOf(hhint.getStringExtra("LoggedinUserID"))-1;
+        int la = Integer.valueOf(hhint.getStringExtra("LoggedinUserID"));
+        Log.d("lallalalallaasw",la+"");
         String url = "http://10.0.2.2:5000/orderlist/"+la;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONArray>() {

@@ -181,6 +181,7 @@ public class UserActivity extends AppCompatActivity {
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");
         intent.putExtra("LoggedinUserID",la);
+//        Log.d("allakkqqa",la+"");
         startActivity(intent);
 
     }

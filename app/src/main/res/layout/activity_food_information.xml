@@ -71,57 +71,14 @@
     </LinearLayout>
 
     <!-- Buttons for Incrementing and Decrementing Quantity -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
 
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:id="@+id/btnDecrement"
-            android:textStyle="bold"
-            android:onClick="decrementOnClick"
-            android:textSize="45dp"
-            android:paddingBottom="10dp"
-            android:layout_marginStart="240dp"
-            android:textColor="@android:color/holo_orange_dark"
-            android:text="-"
-            android:background="#00FFFFFF"
-            />
-
-        <TextView
-            android:id="@+id/txtQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:gravity="center"
-            android:textSize="27sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:fontFamily="serif"
-            />
-
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/btnIncrement"
-            android:onClick="incrementOnClick"
-            android:textStyle="bold"
-            android:textSize="27dp"
-            android:textColor="@android:color/holo_orange_dark"
-            android:text="+"
-            android:background="#00FFFFFF"
-            android:layout_marginLeft="8dp"
-            />
-
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:id="@+id/scrl1"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -207,28 +164,80 @@
 
     </ScrollView>
 
-    <LinearLayout
+    <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/scrl1"
+        >
 
 
         <Button
-            android:layout_width="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:id="@+id/buynow"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="@android:color/holo_orange_dark"
-            android:text="Buy Now"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
             android:background="#00FFFFFF"
             android:onClick="BuyNowClk"
-            />
+            android:text="Buy Now"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:id="@+id/btnDecrement"
+                android:textStyle="bold"
+                android:onClick="decrementOnClick"
+                android:textSize="45dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="240dp"
+                android:textColor="@android:color/holo_orange_dark"
+                android:text="-"
+                android:background="#00FFFFFF"
+                />
+
+            <TextView
+                android:id="@+id/txtQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:gravity="center"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="serif"
+                />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/btnIncrement"
+                android:onClick="incrementOnClick"
+                android:textStyle="bold"
+                android:textSize="27dp"
+                android:textColor="@android:color/holo_orange_dark"
+                android:text="+"
+                android:background="#00FFFFFF"
+                android:layout_marginLeft="8dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/footer"

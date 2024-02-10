@@ -208,7 +208,7 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
 
     public void ordernowClick(View view) {
         Intent hhint=getIntent();
-        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"))+1;
+        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
         Intent lastint=new Intent(CartActivity.this,OrderActivity.class);
         int p=la;
         lastint.putExtra("LoggedinUserID",p+"");
@@ -291,7 +291,8 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                                     int imgi=obj.getInt("imgID");
                                     Log.d("jdjcnlssd","id::::"+id+"    //"+price+","+cfname+" ==cfname");
                                     mailsubject+="Food Name: "+FoodName+", Quantity: "+Quan+", Total Price: "+
-                                            price+", From Caf: "+cfname+"\n";
+                                            price+", From Caf: "+cfname;
+                                    sendemail(mailsubject);
                                     addtovirtcart( FoodName, Integer.valueOf(Quan), Double.valueOf(price),cfname, la, imgi, id);
                                     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                     String url = "http://10.0.2.2:5000/addorderitems";
@@ -326,7 +327,6 @@ public class CartActivity extends AppCompatActivity implements CardItemRecyclerA
                                     queue.add(request1);
                                     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                 }
-                                sendemail(mailsubject);
                                 Log.d("skjbdkjdsjkn",mailsubject);
                             } catch (JSONException e) {
                                 Log.e("JSON_Parsing_Error", e.toString());

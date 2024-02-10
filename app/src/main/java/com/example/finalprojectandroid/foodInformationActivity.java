@@ -345,7 +345,7 @@ public class foodInformationActivity extends AppCompatActivity {
     }
     public void BuyNowClk(View view) {
         Intent hhint=getIntent();
-        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"))+1;
+        int la = Integer.parseInt(hhint.getStringExtra("LoggedinUserID"));
         Intent lastint=new Intent(foodInformationActivity.this,OrderActivity.class);
         int p=la;
         lastint.putExtra("LoggedinUserID",p+"");

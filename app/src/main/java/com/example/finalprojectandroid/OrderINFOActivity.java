@@ -102,9 +102,9 @@ public class OrderINFOActivity extends AppCompatActivity {
         Intent ine = getIntent();
         String la = ine.getStringExtra("LoggedinUserID");
         intent.putExtra("LoggedinUserID",la);
+        Log.d("sllalllalalalpwppw",la+"l");
         startActivity(intent);
     }
-
     public void homeClk(View view) {
         Intent intent=new Intent(OrderINFOActivity.this, CafList.class);
         Intent ine = getIntent();
